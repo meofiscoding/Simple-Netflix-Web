@@ -16,29 +16,24 @@ export class AppComponent {
   title = 'NetlfixClient';
 
   ngOnInit() {
-    // this.oidcSecurityService.checkAuth().subscribe((isAuthenticated) => {
-    //   if (!isAuthenticated) {
-    //     this.oidcSecurityService.authorize();
-    //   }
-    // });
-    this.oidcSecurityService.checkAuth().subscribe((auth) => {
-      console.log('isAuthenticated', auth);
+    this.oidcSecurityService.checkAuth().subscribe((isAuthenticated) => {
+      console.log('isAuthenticated', isAuthenticated);
+      if (!isAuthenticated) {
+        this.oidcSecurityService.authorize();
+      }
     });
   }
 
-  login() {
-    this.oidcSecurityService.authorize();
-  }
-
+  // Showing all movies when user had payment success
   callApi() {
     this.oidcSecurityService.getAccessToken().subscribe((token) => {
       console.log('token', token);
       this.http.get('https://localhost:5000/movies', {
-        headers: {Authorization: `Bearer ${token}`},
+        headers: { Authorization: `Bearer ${token}` },
         responseType: 'text',
       }).subscribe((data) => {
-          console.log('data', data);
-        }
+        console.log('data', data);
+      }
       );
     });
   }

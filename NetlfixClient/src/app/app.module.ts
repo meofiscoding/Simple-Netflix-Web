@@ -19,7 +19,7 @@ import { AppComponent } from './app.component';
         redirectUrl: window.location.origin,
         postLogoutRedirectUri: window.location.origin,
         clientId: 'angular',
-        scope: 'openid secretApi',
+        scope: 'openid movies',
         responseType: 'code',
         logLevel: LogLevel.Debug,
       },
