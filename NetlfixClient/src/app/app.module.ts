@@ -15,7 +15,8 @@ import { AppComponent } from './app.component';
     HttpClientModule,
     AuthModule.forRoot({
       config: {
-        authority: 'https://localhost:5000/identity',
+        authority: 'https://frontend.20.211.61.204.nip.io',
+        // authority: 'http://localhost:5002',
         redirectUrl: window.location.origin,
         postLogoutRedirectUri: window.location.origin,
         clientId: 'angular',
