@@ -18,8 +18,9 @@ export class AppComponent {
   ngOnInit() {
     this.oidcSecurityService.checkAuth().subscribe((isAuthenticated) => {
       console.log('isAuthenticated', isAuthenticated);
-      if (!isAuthenticated) {
-        this.oidcSecurityService.authorize();
+      if (!isAuthenticated.isAuthenticated) {
+        // this.oidcSecurityService.authorize();
+        console.log(isAuthenticated)
       }
     });
   }
@@ -28,7 +29,7 @@ export class AppComponent {
   callApi() {
     this.oidcSecurityService.getAccessToken().subscribe((token) => {
       console.log('token', token);
-      this.http.get('https://localhost:5000/movies', {
+      this.http.get('https://frontend.20.211.61.204.nip.io/movies', {
         headers: { Authorization: `Bearer ${token}` },
         responseType: 'text',
       }).subscribe((data) => {
@@ -36,5 +37,9 @@ export class AppComponent {
       }
       );
     });
+  }
+
+  login() {
+    this.oidcSecurityService.authorize();
   }
 }
