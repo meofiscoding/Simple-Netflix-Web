@@ -4,10 +4,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthModule, LogLevel } from 'angular-auth-oidc-client';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { JwplayerComponent } from './jwplayer/jwplayer.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    JwplayerComponent
   ],
   imports: [
     BrowserModule,
