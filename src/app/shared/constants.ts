@@ -3,6 +3,6 @@ export class Constants {
     // public static clientRoot = "http://localhost:4200";
     public static clientRoot = "https://simplenetflix.vercel.app";
     // public static idpAuthority = "http://localhost:5002"
-    public static idpAuthority = "https://identitynetflix.azurewebsites.net/";
+    public static idpAuthority = "https://identitynetflix.azurewebsites.net";
     public static clientId = "angular-client";
 }
