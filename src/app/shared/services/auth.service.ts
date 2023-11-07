@@ -47,4 +47,12 @@ export class AuthService {
   private checkUser = (user: User | null): boolean => {
     return !!user && !user.expired;
   }
+
+  public finishLogin = (): Promise<User> => {
+    return this._userManager.signinRedirectCallback()
+    .then(user => {
+      this._loginChangedSubject.next(this.checkUser(user));
+      return user;
+    })
+  }
 }
