@@ -4,10 +4,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthModule, LogLevel } from 'angular-auth-oidc-client';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MenuComponent } from './menu/menu.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MenuComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

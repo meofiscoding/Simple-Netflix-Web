@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+app-menu {
+    height: 70px;
+    background-color: rgba(0, 0, 0, 0);
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+}
+
+app-home{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.491), rgba(0, 0, 0, 0.416)) , url(/assets/images/homebg.jpg);
+    height: 100vh;
+}
