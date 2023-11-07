@@ -2,3 +2,4 @@
   <img src="/assets/images/logo.png" alt="" />
 </a>
 <button *ngIf="!isUserAuthenticated" class="login-button" (click)="login()">Sign In</button>
+<button *ngIf="isUserAuthenticated" class="btn btn-link" (click)="logout()">Logout</button> 

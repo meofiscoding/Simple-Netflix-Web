@@ -50,9 +50,18 @@ export class AuthService {
 
   public finishLogin = (): Promise<User> => {
     return this._userManager.signinRedirectCallback()
-    .then(user => {
-      this._loginChangedSubject.next(this.checkUser(user));
-      return user;
-    })
+      .then(user => {
+        this._loginChangedSubject.next(this.checkUser(user));
+        return user;
+      })
+  }
+
+  public logout = () => {
+    this._userManager.signoutRedirect();
+  }
+
+  public finishLogout = () => {
+    this._user = null;
+    return this._userManager.signoutRedirectCallback();
   }
 }

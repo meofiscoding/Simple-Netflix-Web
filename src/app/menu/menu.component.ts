@@ -19,4 +19,8 @@ export class MenuComponent {
   login() {
     this._authService.login();
   }
+  
+  public logout = () => {
+    this._authService.logout();
+  }
 }
