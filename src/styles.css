@@ -12,7 +12,23 @@ app-menu {
     z-index: 999;
 }
 
-app-home{
-    background-image: linear-gradient(rgba(0, 0, 0, 0.491), rgba(0, 0, 0, 0.416)) , url(/assets/images/homebg.jpg);
+body {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.491), rgba(0, 0, 0, 0.416)), url(/assets/images/homebg.jpg);
     height: 100vh;
+}
+
+.centered-container {
+    font-family: sans-serif;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    /* Horizontal centering */
+    align-items: center;
+    /* Vertical centering */
+    height: 100vh;
+    /* Set the height to fill the viewport */
+}
+
+app-home{
+    color: #fff;
 }

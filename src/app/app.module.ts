@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { HomeComponent } from './home/home.component';
 import { ErrorPagesComponent } from './error-pages/error-pages.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -19,18 +20,28 @@ import { ErrorPagesComponent } from './error-pages/error-pages.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    AuthModule.forRoot({
-      config: {
-        authority: 'https://frontend.20.211.61.204.nip.io',
-        // authority: 'http://localhost:5002',
-        redirectUrl: window.location.origin,
-        postLogoutRedirectUri: window.location.origin,
-        clientId: 'angular',
-        scope: 'openid movies',
-        responseType: 'code',
-        logLevel: LogLevel.Debug,
-      },
-    }),
+    RouterModule.forRoot([
+      {path: 'home', component: HomeComponent},
+      {path: 'error', component: ErrorPagesComponent},
+      // { path: 'signin-callback', component: SigninRedirectCallbackComponent },
+      // { path: 'signout-callback', component: SignoutRedirectCallbackComponent },
+      { path: '404', component : ErrorPagesComponent},
+      { path: '', redirectTo: '/home', pathMatch: 'full' },
+      { path: '**', redirectTo: '/404', pathMatch: 'full'}
+    ])
+    
+    // AuthModule.forRoot({
+    //   config: {
+    //     authority: 'https://frontend.20.211.61.204.nip.io',
+    //     // authority: 'http://localhost:5002',
+    //     redirectUrl: window.location.origin,
+    //     postLogoutRedirectUri: window.location.origin,
+    //     clientId: 'angular',
+    //     scope: 'openid movies',
+    //     responseType: 'code',
+    //     logLevel: LogLevel.Debug,
+    //   },
+    // }),
   ],
   providers: [],
   bootstrap: [AppComponent]

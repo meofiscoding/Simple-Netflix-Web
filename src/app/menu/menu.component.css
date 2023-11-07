@@ -4,6 +4,7 @@ img{
 }
 
 .login-button{
+    font-weight: 700;
     margin-right: 200px;
     background-color: #e50a15;
     border: none;
@@ -11,4 +12,9 @@ img{
     color: white;
     font-size: 15px;
     padding: 8px 18px;
+}
+
+.login-button:hover{
+    opacity: 0.9;
+    cursor: pointer;
 }
