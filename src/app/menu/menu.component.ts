@@ -8,9 +8,12 @@ import { AuthService } from '../shared/services/auth.service';
 })
 export class MenuComponent {
   constructor(private _authService: AuthService) { }
-  public isAuthenticated: boolean = false;
+  public isUserAuthenticated: boolean = false;
 
   ngOnInit() {
+    this._authService.loginChanged.subscribe(res => {
+      this.isUserAuthenticated = res;
+    })
   }
   
   login() {
