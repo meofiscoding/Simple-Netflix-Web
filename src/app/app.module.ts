@@ -27,8 +27,8 @@ import { SignoutRedirectCallbackComponent } from './signout-redirect-callback/si
     RouterModule.forRoot([
       {path: 'home', component: HomeComponent},
       {path: 'error', component: ErrorPagesComponent},
-      // { path: 'signin-callback', component: SigninRedirectCallbackComponent },
-      // { path: 'signout-callback', component: SignoutRedirectCallbackComponent },
+      { path: 'signin-callback', component: SigninRedirectCallbackComponent },
+      { path: 'signout-callback', component: SignoutRedirectCallbackComponent },
       { path: '404', component : ErrorPagesComponent},
       { path: '', redirectTo: '/home', pathMatch: 'full' },
       { path: '**', redirectTo: '/404', pathMatch: 'full'}
