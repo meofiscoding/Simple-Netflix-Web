@@ -7,7 +7,7 @@ export class Constants {
     // public static clientRoot = "https://simplenetflix.vercel.app";
     // public static idpAuthority = "https://frontend.20.211.61.204.nip.io";
     // Dev env only
-    public static clientRoot = "https://simple-netflix-irnjixk8p-meof-coding.vercel.app";
+    public static clientRoot = "https://simple-netflix-web-git-dev-meof-coding.vercel.app";
     public static idpAuthority = "https://localhost:7096";
     public static clientId = "angular-client";
 }
