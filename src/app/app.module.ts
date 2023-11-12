@@ -13,6 +13,7 @@ import { NgxStripeModule } from 'ngx-stripe';
 import { environment } from 'src/environments/environment';
 import { PaymentComponent } from './payment/payment.component';
 import { GetPricingPlanComponent } from './payment/get-pricing-plan/get-pricing-plan.component';
+import { ApiserviceService } from './apiservice.service';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,7 @@ import { GetPricingPlanComponent } from './payment/get-pricing-plan/get-pricing-
     //   },
     // }),
   ],
-  providers: [],
+  providers: [ApiserviceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
