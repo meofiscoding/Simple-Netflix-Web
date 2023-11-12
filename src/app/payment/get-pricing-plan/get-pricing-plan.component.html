@@ -30,7 +30,8 @@
           type="radio"
           name="radiotab"
           [id]="'tab-' + (i + 1)"
-          [checked]="i === 3"
+          [checked]="i === 0"
+          (change)="selectTab(i)"
         />
         <div class="label">
           <label class="tab-label text-table-head" [for]="'tab-' + (i + 1)">{{
@@ -45,25 +46,41 @@
     <tbody>
       <tr>
         <th>Monthly price</th>
-        <td class="text-content" *ngFor="let plan of pricingPlansList">
+        <td
+          class="text-content"
+          *ngFor="let plan of pricingPlansList; let i = index"
+          [class.selected]="i === selectedTabIndex"
+        >
           {{ plan.price }}
         </td>
       </tr>
       <tr>
         <th>Video quality</th>
-        <td class="text-content" *ngFor="let plan of pricingPlansList">
+        <td
+          class="text-content"
+          *ngFor="let plan of pricingPlansList; let i = index"
+          [class.selected]="i === selectedTabIndex"
+        >
           {{ plan.videoQuality }}
         </td>
       </tr>
       <tr>
         <th>Resolution</th>
-        <td class="text-content" *ngFor="let plan of pricingPlansList">
+        <td
+          class="text-content"
+          *ngFor="let plan of pricingPlansList; let i = index"
+          [class.selected]="i === selectedTabIndex"
+        >
           {{ plan.resolution }}
         </td>
       </tr>
       <tr>
         <th>Devices you can use to watch</th>
-        <td class="text-content" *ngFor="let plan of pricingPlansList">
+        <td
+          class="text-content"
+          *ngFor="let plan of pricingPlansList; let i = index"
+          [class.selected]="i === selectedTabIndex"
+        >
           <div
             *ngFor="let device of plan.devices"
             class="device-list margin-inline"
@@ -72,6 +89,7 @@
             <span class="text-icon-1">{{ device }}</span>
           </div>
         </td>
+      </tr>
     </tbody>
   </table>
   <!-- Terms -->

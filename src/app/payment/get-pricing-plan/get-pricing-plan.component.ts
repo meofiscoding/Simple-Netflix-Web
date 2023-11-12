@@ -12,6 +12,12 @@ export class GetPricingPlanComponent {
 
   pricingPlansList: any = [];
 
+  selectedTabIndex: number = 0; // Initialize with the default selected tab index
+
+  selectTab(index: number): void {
+    this.selectedTabIndex = index;
+  }
+
   ngOnInit() {
     this.apiService.getPricingPlans().subscribe((data: any) => {
       console.log(data);

@@ -60,8 +60,9 @@
   background: #e50914;
   box-shadow: 0 0 0.5rem #e509146b;
 }
-.tab-input:checked + .label + .content-list {
-  color: #e50914;
+
+.selected {
+  color: #e50914; /* Change this to your desired highlight color */
 }
 
 .content-list {
