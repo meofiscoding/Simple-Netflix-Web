@@ -9,6 +9,9 @@ import { ErrorPagesComponent } from './error-pages/error-pages.component';
 import { RouterModule } from '@angular/router';
 import { SigninRedirectCallbackComponent } from './signin-redirect-callback/signin-redirect-callback.component';
 import { SignoutRedirectCallbackComponent } from './signout-redirect-callback/signout-redirect-callback.component';
+import { NgxStripeModule } from 'ngx-stripe';
+import { environment } from 'src/environments/environment';
+import { PaymentComponent } from './payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,8 @@ import { SignoutRedirectCallbackComponent } from './signout-redirect-callback/si
     HomeComponent,
     ErrorPagesComponent,
     SigninRedirectCallbackComponent,
-    SignoutRedirectCallbackComponent
+    SignoutRedirectCallbackComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,
