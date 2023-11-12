@@ -12,6 +12,7 @@ import { SignoutRedirectCallbackComponent } from './signout-redirect-callback/si
 import { NgxStripeModule } from 'ngx-stripe';
 import { environment } from 'src/environments/environment';
 import { PaymentComponent } from './payment/payment.component';
+import { GetPricingPlanComponent } from './payment/get-pricing-plan/get-pricing-plan.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { PaymentComponent } from './payment/payment.component';
     ErrorPagesComponent,
     SigninRedirectCallbackComponent,
     SignoutRedirectCallbackComponent,
-    PaymentComponent
+    PaymentComponent,
+    GetPricingPlanComponent
   ],
   imports: [
     BrowserModule,
