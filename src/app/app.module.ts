@@ -14,6 +14,7 @@ import { environment } from 'src/environments/environment';
 import { PaymentComponent } from './payment/payment.component';
 import { GetPricingPlanComponent } from './payment/get-pricing-plan/get-pricing-plan.component';
 import { ApiserviceService } from './apiservice.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,8 @@ import { ApiserviceService } from './apiservice.service';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([
       {path: 'home', component: HomeComponent},
       {path: 'error', component: ErrorPagesComponent},

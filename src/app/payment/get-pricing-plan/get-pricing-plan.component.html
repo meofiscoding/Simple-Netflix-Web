@@ -21,20 +21,17 @@
   <!-- PlanType -->
   <div class="plan-grid">
     <div class="planGrid__header">
-      <div
-        class="planSelector"
-        *ngFor="let plan of pricingPlansList; let i = index"
-      >
+      <div class="planSelector" *ngFor="let plan of pricingPlansList">
         <input
           class="tab-input"
           type="radio"
           name="radiotab"
-          [id]="'tab-' + (i + 1)"
-          [checked]="i === 0"
-          (change)="selectTab(i)"
+          [id]="'tab-' + plan.id"
+          [checked]="plan.id === selectedTabIndex"
+          (change)="selectTab(plan.id)"
         />
         <div class="label">
-          <label class="tab-label text-table-head" [for]="'tab-' + (i + 1)">{{
+          <label class="tab-label text-table-head" [for]="'tab-' + plan.id">{{
             plan.planType
           }}</label>
         </div>
@@ -48,8 +45,8 @@
         <th>Monthly price</th>
         <td
           class="text-content"
-          *ngFor="let plan of pricingPlansList; let i = index"
-          [class.selected]="i === selectedTabIndex"
+          *ngFor="let plan of pricingPlansList"
+          [class.selected]="plan.id === selectedTabIndex"
         >
           {{ plan.price }}
         </td>
@@ -58,8 +55,8 @@
         <th>Video quality</th>
         <td
           class="text-content"
-          *ngFor="let plan of pricingPlansList; let i = index"
-          [class.selected]="i === selectedTabIndex"
+          *ngFor="let plan of pricingPlansList"
+          [class.selected]="plan.id === selectedTabIndex"
         >
           {{ plan.videoQuality }}
         </td>
@@ -68,8 +65,8 @@
         <th>Resolution</th>
         <td
           class="text-content"
-          *ngFor="let plan of pricingPlansList; let i = index"
-          [class.selected]="i === selectedTabIndex"
+          *ngFor="let plan of pricingPlansList"
+          [class.selected]="plan.id === selectedTabIndex"
         >
           {{ plan.resolution }}
         </td>
@@ -78,8 +75,8 @@
         <th>Devices you can use to watch</th>
         <td
           class="text-content"
-          *ngFor="let plan of pricingPlansList; let i = index"
-          [class.selected]="i === selectedTabIndex"
+          *ngFor="let plan of pricingPlansList"
+          [class.selected]="plan.id === selectedTabIndex"
         >
           <div
             *ngFor="let device of plan.devices"
@@ -109,10 +106,11 @@
   </div>
 
   <!-- Submit -->
-
-  <form action="">
-    <button class="btn-plan margin-inline" type="submit" value="submit">
-      Next
-    </button>
-  </form>
+  <button
+    class="btn-plan margin-inline"
+    type="button"
+    (click)="redirectToPayment(selectedTabIndex)"
+  >
+    Next
+  </button>
 </section>
