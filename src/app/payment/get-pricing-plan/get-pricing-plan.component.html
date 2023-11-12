@@ -1,1 +1,100 @@
-<p>get-pricing-plan works!</p>
+<section class="container-table margin-inline">
+  <div class="plan-head">
+    <h2>step <strong>2</strong> of <strong>3</strong></h2>
+    <h1>Choose the plan that’s right for you</h1>
+  </div>
+  <div class="plan-list">
+    <div class="choose-plan">
+      <i class="fas fa-check text-check"></i>
+      <p>Watch all you want. Ad-free.</p>
+    </div>
+    <div class="choose-plan">
+      <i class="fas fa-check text-check"></i>
+      <p>Recommendations just for you.</p>
+    </div>
+    <div class="choose-plan">
+      <i class="fas fa-check text-check"></i>
+      <p>Change or cancel your plan anytime.</p>
+    </div>
+  </div>
+
+  <!-- PlanType -->
+  <div class="plan-grid">
+    <div class="planGrid__header">
+      <div
+        class="planSelector"
+        *ngFor="let plan of pricingPlansList; let i = index"
+      >
+        <input
+          class="tab-input"
+          type="radio"
+          name="radiotab"
+          [id]="'tab-' + (i + 1)"
+          [checked]="i === 3"
+        />
+        <div class="label">
+          <label class="tab-label text-table-head" [for]="'tab-' + (i + 1)">{{
+            plan.planType
+          }}</label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Table -->
+  <table>
+    <tbody>
+      <tr>
+        <th>Monthly price</th>
+        <td class="text-content" *ngFor="let plan of pricingPlansList">
+          {{ plan.price }}
+        </td>
+      </tr>
+      <tr>
+        <th>Video quality</th>
+        <td class="text-content" *ngFor="let plan of pricingPlansList">
+          {{ plan.videoQuality }}
+        </td>
+      </tr>
+      <tr>
+        <th>Resolution</th>
+        <td class="text-content" *ngFor="let plan of pricingPlansList">
+          {{ plan.resolution }}
+        </td>
+      </tr>
+      <tr>
+        <th>Devices you can use to watch</th>
+        <td class="text-content" *ngFor="let plan of pricingPlansList">
+          <div
+            *ngFor="let device of plan.devices"
+            class="device-list margin-inline"
+          >
+            <i class="fas fa-{{ device.toLowerCase() }} text-icon"></i>
+            <span class="text-icon-1">{{ device }}</span>
+          </div>
+        </td>
+    </tbody>
+  </table>
+  <!-- Terms -->
+
+  <div class="terms">
+    <p class="text-terms">
+      HD (720p), Full HD (1080p), Ultra HD (4K) and HDR availability subject to
+      your internet service and device capabilities. Not all content is
+      available in all resolutions. See our
+      <span class="text-terms-1">Terms of Use</span> for more details.
+    </p>
+    <p class="text-terms margin-top">
+      Only people who live with you may use your account. Watch on 4 different
+      devices at the same time with Premium, 2 with Standard, and 1 with Basic
+      and Mobile.
+    </p>
+  </div>
+
+  <!-- Submit -->
+
+  <form action="">
+    <button class="btn-plan margin-inline" type="submit" value="submit">
+      Next
+    </button>
+  </form>
+</section>
