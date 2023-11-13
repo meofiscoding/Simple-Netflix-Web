@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
@@ -9,11 +9,9 @@ import { ErrorPagesComponent } from './error-pages/error-pages.component';
 import { RouterModule } from '@angular/router';
 import { SigninRedirectCallbackComponent } from './signin-redirect-callback/signin-redirect-callback.component';
 import { SignoutRedirectCallbackComponent } from './signout-redirect-callback/signout-redirect-callback.component';
-import { NgxStripeModule } from 'ngx-stripe';
-import { environment } from 'src/environments/environment';
 import { GetPricingPlanComponent } from './get-pricing-plan/get-pricing-plan.component';
-import { ApiserviceService } from './shared/services/apiservice.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthInterceptorService } from './shared/services/auth-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -55,7 +53,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     //   },
     // }),
   ],
-  providers: [ApiserviceService],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

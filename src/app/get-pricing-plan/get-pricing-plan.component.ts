@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ApiserviceService } from '../shared/services/apiservice.service';
 import { Stripe, loadStripe } from '@stripe/stripe-js';
 import { environment } from 'src/environments/environment.development';
-import {Constants} from '../shared/constants';
+import { Constants } from '../shared/constants';
 
 @Component({
   selector: 'app-get-pricing-plan',
