@@ -2,17 +2,13 @@ export class Constants {
     public static clientId = "angular-client";
 
     // API route
-    public static get pricingPlansApi() { 
-        return this.apiRoot + "/pricingPlans"; 
-    }
-    
-    public static get subscriptionApi() {
-        return this.apiRoot + "/subscription";
-    }
+    public static pricingPlansApi = "api/pricingPlans";
+
+    public static subscriptionApi = "api/subscription";
     // Local
-    public static apiRoot = "http://localhost:5031/api";
+    public static apiRoot = "https://localhost:7213/api";
     public static clientRoot = "http://localhost:4200";
-    public static idpAuthority = "http://localhost:5286"
+    public static idpAuthority = "https://localhost:7096"
 
     // Production
     // public static clientRoot = "https://simplenetflix.vercel.app";

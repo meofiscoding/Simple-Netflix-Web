@@ -17,7 +17,7 @@ export class AuthService {
       authority: Constants.idpAuthority, // the URI of the Identity Service
       client_id: Constants.clientId, // the id of the client that consumes the Identity Service
       redirect_uri: `${Constants.clientRoot}/signin-callback`, //  the URI to redirect to after successful authentication
-      scope: "openid profile movies", //  the list of supported scopes by Identity Service
+      scope: "openid profile movies payment", //  the list of supported scopes by Identity Service
       response_type: "code", // determines the flow we want to use (AllowedGrantTypes property on Identity Service)
       post_logout_redirect_uri: `${Constants.clientRoot}/signout-callback` // the URI to redirect to after successful logout
     }
@@ -52,12 +52,24 @@ export class AuthService {
     return this._userManager.signinRedirectCallback()
       .then(user => {
         this._loginChangedSubject.next(this.checkUser(user));
+        console.log(user.access_token);
         return user;
       })
   }
 
   public logout = () => {
     this._userManager.signoutRedirect();
+  }
+
+  public getAccessToken = (): Promise<string> => {
+    return this._userManager.getUser()
+      .then(user => {
+        if (!!user && !user.expired) {
+          return user.access_token;
+        } else {
+          return "";
+        }
+      })
   }
 
   public finishLogout = () => {

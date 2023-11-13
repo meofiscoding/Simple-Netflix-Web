@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { ApiserviceService } from '../../apiservice.service';
+import { ApiserviceService } from '../shared/services/apiservice.service';
 import { Stripe, loadStripe } from '@stripe/stripe-js';
 import { environment } from 'src/environments/environment.development';
+import {Constants} from '../shared/constants';
 
 @Component({
   selector: 'app-get-pricing-plan',
@@ -22,10 +23,12 @@ export class GetPricingPlanComponent {
   }
 
   ngOnInit() {
-    this.apiService.getPricingPlans().subscribe((data: any) => {
-      console.log(data);
+    this.getPricingPlans();
+  }
+
+  getPricingPlans() {
+    this.apiService.getData(Constants.pricingPlansApi).subscribe((data: any) => {
       this.pricingPlansList = data;
-      // set selected tab index to the id of the first pricing plan
       this.selectedTabIndex = this.pricingPlansList[0].id;
     });
   }
@@ -41,8 +44,11 @@ export class GetPricingPlanComponent {
   async pay(stripePublicKey: string) {
     this.stripePromise = loadStripe(stripePublicKey);
     const stripe = await this.stripePromise;
-    this.apiService.postSubcription(this.selectedTabIndex).subscribe((response: string) => {            
+    this.apiService.postData(Constants.subscriptionApi, this.selectedTabIndex).subscribe((response: any) => {
       stripe?.redirectToCheckout({ sessionId: response });
     });
+    // this.apiService.postSubcription(this.selectedTabIndex).subscribe((response: string) => {
+    //   stripe?.redirectToCheckout({ sessionId: response });
+    // });
   }
 }

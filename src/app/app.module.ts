@@ -11,9 +11,8 @@ import { SigninRedirectCallbackComponent } from './signin-redirect-callback/sign
 import { SignoutRedirectCallbackComponent } from './signout-redirect-callback/signout-redirect-callback.component';
 import { NgxStripeModule } from 'ngx-stripe';
 import { environment } from 'src/environments/environment';
-import { PaymentComponent } from './payment/payment.component';
-import { GetPricingPlanComponent } from './payment/get-pricing-plan/get-pricing-plan.component';
-import { ApiserviceService } from './apiservice.service';
+import { GetPricingPlanComponent } from './get-pricing-plan/get-pricing-plan.component';
+import { ApiserviceService } from './shared/services/apiservice.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -24,7 +23,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ErrorPagesComponent,
     SigninRedirectCallbackComponent,
     SignoutRedirectCallbackComponent,
-    PaymentComponent,
     GetPricingPlanComponent
   ],
   imports: [
@@ -38,9 +36,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
       {path: 'error', component: ErrorPagesComponent},
       { path: 'signin-callback', component: SigninRedirectCallbackComponent },
       { path: 'signout-callback', component: SignoutRedirectCallbackComponent },
+      { path: 'planform', component: GetPricingPlanComponent },
       { path: '404', component : ErrorPagesComponent},
       { path: '', redirectTo: '/home', pathMatch: 'full' },
-      { path: '**', redirectTo: '/404', pathMatch: 'full'}
+      { path: '**', redirectTo: '/404', pathMatch: 'full'},
     ])
     
     // AuthModule.forRoot({

@@ -12,6 +12,8 @@ export class SigninRedirectCallbackComponent {
   ngOnInit() {
     this._authService.finishLogin().then(() => {
       // Navigate user to home page
+      // go to payment page
+      // this._router.navigate(['/planform']);
       this._router.navigate(['/'], { replaceUrl: true }); // replace url = true to remove signin-redirect-callback from navigation stack
     })
   }
