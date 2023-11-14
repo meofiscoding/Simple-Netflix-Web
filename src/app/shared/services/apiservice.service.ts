@@ -8,7 +8,7 @@ import { AuthService } from './auth.service';
 })
 export class ApiserviceService {
 
-  constructor(private http: HttpClient, private envUrl: EnvironmentUrlService, private _authService: AuthService) { }
+  constructor(private http: HttpClient, private envUrl: EnvironmentUrlService) { }
 
   public getData = (route: string) => {
     return this.http.get(this.createCompleteRoute(route, this.envUrl.urlAddress));
@@ -18,17 +18,7 @@ export class ApiserviceService {
     return this.http.post(this.createCompleteRoute(route, this.envUrl.urlAddress), data);
   };
 
-  // postSubcription(subscription: any): Observable<any> {
-  //   const httpOptions = {
-  //     headers: new HttpHeaders({
-  //       'Content-Type': 'application/json',
-  //       'Access-Control-Allow-Origin': '*'
-  //     })
-  //   }
-  //   return this.http.post(Constants.subscriptionApi, subscription, httpOptions);
-  // }
-
-  private createCompleteRoute = (route: string, envAddress: string) => {
+  public createCompleteRoute = (route: string, envAddress: string) => {
     return `${envAddress}/${route}`;
   }
 }

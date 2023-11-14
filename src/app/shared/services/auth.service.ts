@@ -2,6 +2,10 @@ import { Injectable } from '@angular/core';
 import { UserManager, User, UserManagerSettings } from 'oidc-client';
 import { Constants } from '../constants';
 import { Subject } from 'rxjs';
+import { ApiserviceService } from './apiservice.service';
+import { UserForRegistrationDto } from 'src/app/_interface/user/userForRegistrationDto.model';
+import { RegistrationResponseDto } from 'src/app/_interface/response/registrationResponseDto.model';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -23,12 +27,16 @@ export class AuthService {
     }
   }
 
-  constructor() {
+  constructor(private apiService: ApiserviceService, private http: HttpClient) {
     this._userManager = new UserManager(this.idpSettings);
   }
 
   public login = () => {
     return this._userManager.signinRedirect();
+  }
+
+  public register = (route: string, body: UserForRegistrationDto) => {
+    return this.http.post<RegistrationResponseDto>(this.apiService.createCompleteRoute(route, Constants.idpAuthority), body);
   }
 
   public isAuthenticated = (): Promise<boolean> => {

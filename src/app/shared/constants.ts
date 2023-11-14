@@ -3,6 +3,7 @@ export class Constants {
 
     // API route
     public static pricingPlansApi = "api/pricingPlans";
+    public static registerApi= "/auth/register"
 
     public static subscriptionApi = "api/subscription";
     // Local

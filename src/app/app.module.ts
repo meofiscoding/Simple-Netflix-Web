@@ -12,6 +12,7 @@ import { SignoutRedirectCallbackComponent } from './signout-redirect-callback/si
 import { GetPricingPlanComponent } from './get-pricing-plan/get-pricing-plan.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptorService } from './shared/services/auth-interceptor.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -29,17 +30,19 @@ import { AuthInterceptorService } from './shared/services/auth-interceptor.servi
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    NgbModule,
     RouterModule.forRoot([
-      {path: 'home', component: HomeComponent},
-      {path: 'error', component: ErrorPagesComponent},
+      { path: 'home', component: HomeComponent },
+      { path: 'error', component: ErrorPagesComponent },
+      { path: 'authentication', loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule) },
       { path: 'signin-callback', component: SigninRedirectCallbackComponent },
       { path: 'signout-callback', component: SignoutRedirectCallbackComponent },
       { path: 'planform', component: GetPricingPlanComponent },
-      { path: '404', component : ErrorPagesComponent},
+      { path: '404', component: ErrorPagesComponent },
       { path: '', redirectTo: '/home', pathMatch: 'full' },
-      { path: '**', redirectTo: '/404', pathMatch: 'full'},
+      { path: '**', redirectTo: '/404', pathMatch: 'full' },
     ])
-    
+
     // AuthModule.forRoot({
     //   config: {
     //     authority: 'https://frontend.20.211.61.204.nip.io',
