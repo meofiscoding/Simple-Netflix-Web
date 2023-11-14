@@ -7,14 +7,25 @@ import { Router } from '@angular/router';
   template: `<div></div>`
 })
 export class SigninRedirectCallbackComponent {
+  public isUserMember: boolean = false;
   constructor(private _authService: AuthService, private _router: Router) { }
 
   ngOnInit() {
     this._authService.finishLogin().then(() => {
-      // Navigate user to home page
-      // go to payment page
-      // this._router.navigate(['/planform']);
-      this._router.navigate(['/'], { replaceUrl: true }); // replace url = true to remove signin-redirect-callback from navigation stack
+      this.isMember().then(() => {
+        if (this.isUserMember) {
+          this._router.navigate(['/planform']);
+        } else {
+          this._router.navigate(['/'], { replaceUrl: true }); // replace url = true to remove signin-redirect-callback from navigation stack
+        }
+      })
     })
+  }
+
+  public isMember = () => {
+    return this._authService.checkIfUserIsMember()
+      .then(res => {
+        this.isUserMember = res;
+      })
   }
 }

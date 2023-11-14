@@ -60,7 +60,7 @@ export class AuthService {
     return this._userManager.signinRedirectCallback()
       .then(user => {
         this._loginChangedSubject.next(this.checkUser(user));
-        console.log(user.access_token);
+        // console.log(user.access_token);
         return user;
       })
   }
@@ -83,5 +83,16 @@ export class AuthService {
   public finishLogout = () => {
     this._user = null;
     return this._userManager.signoutRedirectCallback();
+  }
+
+  // check if user is Member role
+  public checkIfUserIsMember = (): Promise<boolean> => {
+    return this._userManager.getUser()
+      .then(user => {
+        // Access role claim
+        const roleClaim = user?.profile['role']
+        console.log(roleClaim);
+        return roleClaim === 'Member';
+      })
   }
 }
