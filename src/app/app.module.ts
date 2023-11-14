@@ -13,6 +13,7 @@ import { GetPricingPlanComponent } from './get-pricing-plan/get-pricing-plan.com
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptorService } from './shared/services/auth-interceptor.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ErrorHandlerService } from './shared/services/error-handler.service';
 
 @NgModule({
   declarations: [
@@ -42,22 +43,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
       { path: '', redirectTo: '/home', pathMatch: 'full' },
       { path: '**', redirectTo: '/404', pathMatch: 'full' },
     ])
-
-    // AuthModule.forRoot({
-    //   config: {
-    //     authority: 'https://frontend.20.211.61.204.nip.io',
-    //     // authority: 'http://localhost:5002',
-    //     redirectUrl: window.location.origin,
-    //     postLogoutRedirectUri: window.location.origin,
-    //     clientId: 'angular',
-    //     scope: 'openid movies',
-    //     responseType: 'code',
-    //     logLevel: LogLevel.Debug,
-    //   },
-    // }),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorHandlerService, multi: true },
   ],
   bootstrap: [AppComponent]
 })
