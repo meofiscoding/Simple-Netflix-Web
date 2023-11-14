@@ -124,7 +124,7 @@ span {
 }
 
 th{
-  width: 29%;
+  width: 33%;
   fill: #333;
   color: #333;
   flex: 0 0 auto;
@@ -152,7 +152,7 @@ tr{
 td{
   font-weight: 500;
   color: #737373;
-  width: 14%;
+  width: 16%;
   margin-right: 10px;
 }
 
