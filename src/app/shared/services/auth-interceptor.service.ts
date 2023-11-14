@@ -32,7 +32,7 @@ export class AuthInterceptorService implements HttpInterceptor {
               return res;
             })
             .catch((err) => {
-              if (err.status == 401 && token == "") {
+              if (err.status == 401 || token == "") {
                 this._authService.login();
               } else {
                 this._router.navigate(['/home']);
