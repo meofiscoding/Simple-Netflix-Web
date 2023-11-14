@@ -1,4 +1,4 @@
-import { HttpResponse } from '@angular/common/http';
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserForRegistrationDto } from 'src/app/_interface/user/userForRegistrationDto.model';
@@ -11,6 +11,8 @@ import { AuthService } from 'src/app/shared/services/auth.service';
   styleUrls: ['./register-user.component.css']
 })
 export class RegisterUserComponent {
+  public errorMessage: string = '';
+  public showError: boolean = false;
   registerForm: FormGroup = new FormGroup({});
 
   constructor(private authService: AuthService) {
@@ -31,7 +33,7 @@ export class RegisterUserComponent {
     return this.registerForm.controls[controllerName].hasError(errorName);
   }
 
-  public registerUser = (registerFormValue : any) => {
+  public registerUser = (registerFormValue: any) => {
     const formValues = { ...registerFormValue };
     const userForRegistration: UserForRegistrationDto = {
       email: formValues.email,
@@ -44,8 +46,9 @@ export class RegisterUserComponent {
           console.log('User is registered');
           this.registerForm.reset();
         },
-        error: (error: HttpResponse<any>) => {
-          console.log(error);
+        error: (err: HttpErrorResponse) => {
+          this.errorMessage = err.message;
+          this.showError = true;
         }
       })
   }

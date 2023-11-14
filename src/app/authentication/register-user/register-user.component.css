@@ -1,5 +1,7 @@
 .register-container {
     animation: form ease-in-out 0.6s;
+    text-align: left;
+
 }
 
 .authLinks {
@@ -8,10 +10,6 @@
     font-size: 19px;
     font-weight: 500;
     line-height: 90px;
-}
-
-.form-floating{
-    text-align: left;
 }
 
 .stepIndicator {

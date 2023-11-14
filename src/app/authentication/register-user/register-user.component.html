@@ -18,12 +18,11 @@
       novalidate
       (ngSubmit)="registerUser(registerForm.value)"
     >
-      <!-- @if (ViewBag.ErrorMessage != null) {
-        <div class="alert alert-danger">
-          <i class="fa-solid fa-circle-exclamation" style="color: #c3223b"></i>
-          @ViewBag.ErrorMessage
-        </div>
-        } -->
+      <div *ngIf="showError" class="alert alert-danger">
+        <i class="fa-solid fa-circle-exclamation" style="color: #c3223b"></i>
+        <br>
+        <span [innerHTML]="errorMessage"></span>
+      </div>
       <div class="form-floating my-3">
         <input
           type="email"
