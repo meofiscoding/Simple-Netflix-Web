@@ -92,7 +92,7 @@ export class AuthService {
         // Access role claim
         const roleClaim = user?.profile['role']
         console.log(roleClaim);
-        return roleClaim === 'Member';
+        return roleClaim === Constants.memberRole;
       })
   }
 }

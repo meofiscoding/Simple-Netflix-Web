@@ -1,4 +1,7 @@
 export class Constants {
+    // Role
+    public static memberRole = "Member";
+    
     public static clientId = "angular-client";
 
     // API route
