@@ -1,0 +1,16 @@
+.plan-head{
+    text-align: left;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+h2 {
+  font-size: 0.84rem;
+  font-weight: 300;
+  line-height: 1.3;
+  text-transform: uppercase;
+}

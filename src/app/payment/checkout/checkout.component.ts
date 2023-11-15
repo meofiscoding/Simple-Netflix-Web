@@ -55,17 +55,20 @@ export class CheckoutComponent {
   }
 
   private camelToSnakeCase(obj: any) {
-    const snakeCaseObj:any = {};
+    const snakeCaseObj: any = {};
     for (const key in obj) {
-        if (obj.hasOwnProperty(key)) {
-            const snakeCaseKey = key.replace(/[A-Z]/g, letter => `_${letter.toLowerCase()}`);
-            snakeCaseObj[snakeCaseKey] = obj[key];
-        }
+      if (obj.hasOwnProperty(key)) {
+        const snakeCaseKey = key.replace(/[A-Z]/g, letter => `_${letter.toLowerCase()}`);
+        snakeCaseObj[snakeCaseKey] = obj[key];
+      }
     }
     return snakeCaseObj;
-}
+  }
 
+  changePlan() {
 
+  }
+  
   pay() {
 
   }

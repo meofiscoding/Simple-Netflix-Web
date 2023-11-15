@@ -1,8 +1,25 @@
 <div [formGroup]="paymentElementForm">
+  <div class="plan-head">
+    <h2>step <strong>3</strong> of <strong>3</strong></h2>
+    <h1>Set up your credit or debit card</h1>
+  </div>
   <ng-container *ngIf="elementsOptions?.clientSecret as clientSecret">
     <ngx-stripe-elements [elementsOptions]="elementsOptions">
       <ngx-stripe-payment [appearance]="appearance" />
     </ngx-stripe-elements>
   </ng-container>
-  <button type="button" class="btn mt-3 btn-danger btn-lg col-12" (click)="pay()">Start membership</button>
+  <div class="order-info d-flex justify-content-between mt-4">
+    <div class="selectedPlan d-flex flex-column align-items-start">
+      <strong class="price">260,000&nbsp;₫/month</strong>
+      <span class="planType text-muted">Premium</span>
+    </div>
+    <a class="text-primary"> Change </a>
+  </div>
+  <button
+    type="button"
+    class="btn mt-3 btn-danger btn-lg col-12"
+    (click)="pay()"
+  >
+    Start membership
+  </button>
 </div>
