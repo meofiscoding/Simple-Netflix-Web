@@ -19,6 +19,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
     CommonModule,
     ReactiveFormsModule,
     RouterModule.forChild([
+      { path: 'checkout', component: CheckoutComponent },
       { path: 'planform', component: GetPricingPlanComponent },
       { path: 'cancel', component: OrderCancelComponent }
     ])

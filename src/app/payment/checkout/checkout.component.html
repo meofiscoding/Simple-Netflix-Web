@@ -1,1 +1,8 @@
-<p>checkout works!</p>
+<div [formGroup]="paymentElementForm">
+  <ng-container *ngIf="elementsOptions?.clientSecret as clientSecret">
+    <ngx-stripe-elements [elementsOptions]="elementsOptions">
+      <ngx-stripe-payment [appearance]="appearance" />
+    </ngx-stripe-elements>
+  </ng-container>
+  <button type="button" class="btn mt-3 btn-danger btn-lg col-12" (click)="pay()">Start membership</button>
+</div>
