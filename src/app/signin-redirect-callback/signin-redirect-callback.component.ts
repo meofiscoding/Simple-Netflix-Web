@@ -14,9 +14,9 @@ export class SigninRedirectCallbackComponent {
     this._authService.finishLogin().then(() => {
       this.isMember().then(() => {
         if (this.isUserMember) {
-          this._router.navigate(['/planform']);
-        } else {
           this._router.navigate(['/'], { replaceUrl: true }); // replace url = true to remove signin-redirect-callback from navigation stack
+        } else {
+          this._router.navigate(['/payment/planform']);
         }
       })
     })

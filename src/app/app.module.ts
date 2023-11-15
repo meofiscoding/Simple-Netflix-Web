@@ -9,11 +9,12 @@ import { ErrorPagesComponent } from './error-pages/error-pages.component';
 import { RouterModule } from '@angular/router';
 import { SigninRedirectCallbackComponent } from './signin-redirect-callback/signin-redirect-callback.component';
 import { SignoutRedirectCallbackComponent } from './signout-redirect-callback/signout-redirect-callback.component';
-import { GetPricingPlanComponent } from './get-pricing-plan/get-pricing-plan.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
 import { AuthInterceptorService } from './shared/services/auth-interceptor.service';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ErrorHandlerService } from './shared/services/error-handler.service';
+import { MovieComponent } from './movie/movie.component';
+import { NgxStripeModule } from 'ngx-stripe';
+import { environment } from 'src/environments/environment.development';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { ErrorHandlerService } from './shared/services/error-handler.service';
     ErrorPagesComponent,
     SigninRedirectCallbackComponent,
     SignoutRedirectCallbackComponent,
-    GetPricingPlanComponent
+    MovieComponent
   ],
   imports: [
     BrowserModule,
@@ -31,18 +32,19 @@ import { ErrorHandlerService } from './shared/services/error-handler.service';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule,
     RouterModule.forRoot([
       { path: 'home', component: HomeComponent },
       { path: 'error', component: ErrorPagesComponent },
       { path: 'authentication', loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule) },
+      { path: 'payment', loadChildren: () => import('./payment/payment.module').then(m => m.PaymentModule) },
+      { path: 'movies', component: MovieComponent },
       { path: 'signin-callback', component: SigninRedirectCallbackComponent },
       { path: 'signout-callback', component: SignoutRedirectCallbackComponent },
-      { path: 'planform', component: GetPricingPlanComponent },
       { path: '404', component: ErrorPagesComponent },
       { path: '', redirectTo: '/home', pathMatch: 'full' },
       { path: '**', redirectTo: '/404', pathMatch: 'full' },
-    ])
+    ]),
+    NgxStripeModule.forRoot(environment.stripe.publicKey)
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true },

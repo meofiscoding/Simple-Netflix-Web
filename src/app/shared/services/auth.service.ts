@@ -95,4 +95,13 @@ export class AuthService {
         return roleClaim === Constants.memberRole;
       })
   }
+
+  // get current userId
+  public getCurrentUserId = async (): Promise<string> => {
+    const user = await this._userManager.getUser();
+    // Access role claim
+    const userId = user?.profile.sub;
+    console.log(userId);
+    return userId ?? '';
+  }
 }

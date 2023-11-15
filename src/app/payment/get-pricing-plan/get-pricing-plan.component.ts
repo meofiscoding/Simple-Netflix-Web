@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { ApiserviceService } from '../shared/services/apiservice.service';
+import { ApiserviceService } from '../../shared/services/apiservice.service';
 import { Stripe, loadStripe } from '@stripe/stripe-js';
 import { environment } from 'src/environments/environment.development';
-import { Constants } from '../shared/constants';
+import { Constants } from '../../shared/constants';
+import { AuthService } from 'src/app/shared/services/auth.service';
+import { UserPricingPlanDTO } from 'src/app/_interface/payment/userPricingPlanDto.model';
 
 @Component({
   selector: 'app-get-pricing-plan',
@@ -12,11 +14,11 @@ import { Constants } from '../shared/constants';
 
 export class GetPricingPlanComponent {
   private stripePromise?: Promise<Stripe | null>;
-  constructor(private apiService: ApiserviceService) { }
+  constructor(private apiService: ApiserviceService, private authService: AuthService) { }
 
   pricingPlansList: any = [];
-
   selectedTabIndex: number = 0; // Initialize with the default selected tab index
+  currentUserId: string = "";
 
   selectTab(index: number): void {
     this.selectedTabIndex = index;
@@ -24,6 +26,9 @@ export class GetPricingPlanComponent {
 
   ngOnInit() {
     this.getPricingPlans();
+    this.authService.getCurrentUserId().then((userId: string) => {
+      this.currentUserId = userId;
+    });
   }
 
   getPricingPlans() {
@@ -33,8 +38,7 @@ export class GetPricingPlanComponent {
     });
   }
 
-  async redirectToPayment(subcriptionID: number) {
-    console.log(subcriptionID);
+  async redirectToPayment() {
     await this.pay(environment.stripe.publicKey);
     // this.apiService.postSubcription(subcriptionID).subscribe((data: any) => {
     //   console.log(data);
@@ -44,11 +48,15 @@ export class GetPricingPlanComponent {
   async pay(stripePublicKey: string) {
     this.stripePromise = loadStripe(stripePublicKey);
     const stripe = await this.stripePromise;
-    this.apiService.postData(Constants.subscriptionApi, this.selectedTabIndex).subscribe((response: any) => {
-      stripe?.redirectToCheckout({ sessionId: response });
+    const userPayment: UserPricingPlanDTO = {
+      userId: this.currentUserId,
+      pricingPlanId: this.selectedTabIndex
+    }
+    this.apiService.postData(Constants.subscriptionApi, userPayment).subscribe((response: any) => {
+      stripe?.redirectToCheckout({ sessionId: response }).then((result: any) => {
+        debugger;
+        console.log(result);
+      })
     });
-    // this.apiService.postSubcription(this.selectedTabIndex).subscribe((response: string) => {
-    //   stripe?.redirectToCheckout({ sessionId: response });
-    // });
   }
 }
