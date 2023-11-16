@@ -12,7 +12,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
     OrderCancelComponent,
     CheckoutComponent,
     GetPricingPlanComponent,
-    CheckoutComponent
+    CheckoutComponent,
   ],
   imports: [
     NgxStripeModule,

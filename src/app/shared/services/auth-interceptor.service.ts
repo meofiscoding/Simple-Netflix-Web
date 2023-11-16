@@ -26,6 +26,7 @@ export class AuthInterceptorService implements HttpInterceptor {
         this._authService.getAccessToken().then((token) => {
           const headers = req.headers.set('Authorization', `Bearer ${token}`);
           const authReq = req.clone({ headers });
+          debugger;
           // if response is 404 and user is not logged in, redirect to login page, else redirect to home page
           return lastValueFrom(next.handle(authReq))
             .then((res) => {

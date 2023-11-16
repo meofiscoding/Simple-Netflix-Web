@@ -109,7 +109,8 @@
   <button
     class="btn-plan margin-inline"
     type="button"
-    (click)="redirectToPayment()"
+    [routerLink]="['/payment/checkout']"
+    [state]="{ data: selectedTabIndex }"
   >
     Next
   </button>

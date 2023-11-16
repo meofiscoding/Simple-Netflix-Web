@@ -10,8 +10,8 @@ export class ApiserviceService {
 
   constructor(private http: HttpClient, private envUrl: EnvironmentUrlService) { }
 
-  public getData = (route: string) => {
-    return this.http.get(this.createCompleteRoute(route, this.envUrl.urlAddress));
+  public getData = (route: string, query?: any) => {
+    return this.http.get(this.createCompleteRoute(route, this.envUrl.urlAddress), query);
   }
 
   public postData = (route: string, data: any) => {

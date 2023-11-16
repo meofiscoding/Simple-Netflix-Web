@@ -1,12 +1,14 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, ViewChild } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { Component, Input, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Appearance, PaymentIntent, StripeElementsOptions } from '@stripe/stripe-js';
 import { StripePaymentElementComponent, StripeService } from 'ngx-stripe';
-import { map } from 'rxjs';
+import { map, switchMap } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 import { Constants } from 'src/app/shared/constants';
-
+import { ActivatedRoute } from '@angular/router';
+import { ApiserviceService } from 'src/app/shared/services/apiservice.service';
+import { SubscriptionCheckOutDto } from 'src/app/_interface/payment/subscriptionCheckOutDto.model';
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
@@ -15,11 +17,16 @@ import { Constants } from 'src/app/shared/constants';
 export class CheckoutComponent {
   @ViewChild(StripePaymentElementComponent)
   paymentElement!: StripePaymentElementComponent;
-
+  paying = false;
   elementsOptions: StripeElementsOptions = {
     locale: 'en',
   };
-
+  paymentElementForm: FormGroup = this.fb.group({});
+  userPricingPlan: SubscriptionCheckOutDto = {
+    planType: "",
+    price: 0,
+  };
+  planId: number = 0;
   appearance: Appearance = {
     theme: 'stripe',
     labels: 'floating',
@@ -28,20 +35,25 @@ export class CheckoutComponent {
     },
   };
 
-  paymentElementForm = this.fb.group({
-    name: ['John doe', [Validators.required]],
-    amount: [2500, [Validators.required, Validators.pattern(/d+/)]]
-  });
-
   constructor(
     private http: HttpClient,
     private fb: FormBuilder,
-    private stripeService: StripeService
+    private stripeService: StripeService,
+    private _router: ActivatedRoute,
+    private apiService: ApiserviceService
   ) { }
 
   ngOnInit() {
-    this.createPaymentIntent(this.paymentElementForm.get('amount')?.value ?? 0)
-      .subscribe(pi => {
+    // Retrieve data from the route
+    this.planId = history.state.data;
+    // fetch plan info
+    this.apiService.getData(Constants.pricingPlansInfoApi + "/" + this.planId)
+      .pipe(
+        switchMap((data: any) => {
+          this.userPricingPlan = data;
+          return this.createPaymentIntent(this.userPricingPlan.price);
+        })
+      ).subscribe(pi => {
         if (!pi.client_secret) {
           throw new Error('Invalid PaymentIntent client_secret');
         }
@@ -50,7 +62,7 @@ export class CheckoutComponent {
   }
 
   private createPaymentIntent(amount: number): Observable<PaymentIntent> {
-    return this.http.post<PaymentIntent>(`${Constants.apiRoot}/create-payment-intent`, amount)
+    return this.http.post<PaymentIntent>(`${Constants.apiRoot}/${Constants.createPaymentIntentApi}`, this.userPricingPlan.price)
       .pipe(map(pi => this.camelToSnakeCase(pi)));
   }
 
@@ -65,11 +77,27 @@ export class CheckoutComponent {
     return snakeCaseObj;
   }
 
-  changePlan() {
-
-  }
-  
-  pay() {
-
+  pay(): void {
+    this.paying = true;
+    this.stripeService.confirmPayment({
+      elements: this.paymentElement.elements,
+      confirmParams: {
+      }, redirect: 'if_required'
+    }).subscribe((result) => {
+      this.paying = false;
+      if (result.error) {
+        alert({ success: false, error: result.error.message });
+      } else {
+        // The payment has been processed!
+        if (result.paymentIntent.status === 'succeeded') {
+          // TODO: call api to update user's membership
+          this.apiService.postData(Constants.paymentSuccessApi, this.planId).subscribe((data: any) => {
+            if (data) {
+              alert({ success: true });
+            }
+          });
+        }
+      }
+    });
   }
 }
