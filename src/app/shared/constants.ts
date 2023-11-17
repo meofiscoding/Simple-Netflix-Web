@@ -14,12 +14,9 @@ export class Constants {
 
     public static subscriptionApi = "api/subscription";
     // Local
-    // public static apiRoot = "https://localhost:7213";
-    // public static clientRoot = "http://localhost:4200";
-    // public static idpAuthority = "https://localhost:7096"
-    public static apiRoot = "http://localhost:5031";
+    public static apiRoot = "https://localhost:7213";
     public static clientRoot = "http://localhost:4200";
-    public static idpAuthority = "http://localhost:5286"
+    public static idpAuthority = "https://localhost:7096"
     // Production
     // public static clientRoot = "https://simplenetflix.vercel.app";
     // public static apiRoot = "https://simplenetflixapi.azurewebsites.net/api";
