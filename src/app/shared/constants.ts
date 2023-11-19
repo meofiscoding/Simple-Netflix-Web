@@ -6,7 +6,7 @@ export class Constants {
 
     // API route
     public static pricingPlansApi = "payment/planform";
-    public static pricingPlansInfoApi = "/payment/plan";
+    public static pricingPlansInfoApi = "payment/plan";
     public static registerApi= "auth/register"
     public static paymentSuccessApi = "payment/success"
     public static createPaymentIntentApi = "payment/checkout"
