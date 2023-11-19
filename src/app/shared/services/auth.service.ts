@@ -32,6 +32,7 @@ export class AuthService {
   }
 
   public login = () => {
+    debugger;
     return this._userManager.signinRedirect();
   }
 
