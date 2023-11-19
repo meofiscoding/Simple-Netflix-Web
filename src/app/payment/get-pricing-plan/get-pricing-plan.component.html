@@ -1,0 +1,117 @@
+<section class="container-table margin-inline">
+  <div class="plan-head">
+    <h2>step <strong>2</strong> of <strong>3</strong></h2>
+    <h1>Choose the plan that’s right for you</h1>
+  </div>
+  <div class="plan-list">
+    <div class="choose-plan">
+      <i class="fas fa-check text-check"></i>
+      <p>Watch all you want. Ad-free.</p>
+    </div>
+    <div class="choose-plan">
+      <i class="fas fa-check text-check"></i>
+      <p>Recommendations just for you.</p>
+    </div>
+    <div class="choose-plan">
+      <i class="fas fa-check text-check"></i>
+      <p>Change or cancel your plan anytime.</p>
+    </div>
+  </div>
+
+  <!-- PlanType -->
+  <div class="plan-grid">
+    <div class="planGrid__header">
+      <div class="planSelector" *ngFor="let plan of pricingPlansList">
+        <input
+          class="tab-input"
+          type="radio"
+          name="radiotab"
+          [id]="'tab-' + plan.id"
+          [checked]="plan.id === selectedTabIndex"
+          (change)="selectTab(plan.id)"
+        />
+        <div class="label">
+          <label class="tab-label text-table-head" [for]="'tab-' + plan.id">{{
+            plan.planType
+          }}</label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Table -->
+  <table>
+    <tbody>
+      <tr>
+        <th>Monthly price</th>
+        <td
+          class="text-content"
+          *ngFor="let plan of pricingPlansList"
+          [class.selected]="plan.id === selectedTabIndex"
+        >
+          {{ plan.price }}
+        </td>
+      </tr>
+      <tr>
+        <th>Video quality</th>
+        <td
+          class="text-content"
+          *ngFor="let plan of pricingPlansList"
+          [class.selected]="plan.id === selectedTabIndex"
+        >
+          {{ plan.videoQuality }}
+        </td>
+      </tr>
+      <tr>
+        <th>Resolution</th>
+        <td
+          class="text-content"
+          *ngFor="let plan of pricingPlansList"
+          [class.selected]="plan.id === selectedTabIndex"
+        >
+          {{ plan.resolution }}
+        </td>
+      </tr>
+      <tr>
+        <th>Devices you can use to watch</th>
+        <td
+          class="text-content"
+          *ngFor="let plan of pricingPlansList"
+          [class.selected]="plan.id === selectedTabIndex"
+        >
+          <div
+            *ngFor="let device of plan.devices"
+            class="device-list margin-inline"
+          >
+            <i class="fas fa-{{ device.toLowerCase() }} text-icon"></i>
+            <span class="text-icon-1">{{ device }}</span>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- Terms -->
+
+  <div class="terms">
+    <p class="text-terms">
+      HD (720p), Full HD (1080p), Ultra HD (4K) and HDR availability subject to
+      your internet service and device capabilities. Not all content is
+      available in all resolutions. See our
+      <span class="text-terms-1">Terms of Use</span> for more details.
+    </p>
+    <p class="text-terms margin-top">
+      Only people who live with you may use your account. Watch on 4 different
+      devices at the same time with Premium, 2 with Standard, and 1 with Basic
+      and Mobile.
+    </p>
+  </div>
+
+  <!-- Submit -->
+  <button
+    class="btn-plan margin-inline"
+    type="button"
+    [routerLink]="['/payment/checkout']"
+    [state]="{ data: selectedTabIndex }"
+  >
+    Next
+  </button>
+</section>

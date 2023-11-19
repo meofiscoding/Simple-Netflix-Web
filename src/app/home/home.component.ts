@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
+  ngAfterViewInit(){
+    document.querySelector('body')?.classList.add('bg-home');
+  }
 
+  ngOnDestroy(){
+    document.querySelector('body')?.classList.remove('bg-home');
+  }
 }
