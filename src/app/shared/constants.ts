@@ -21,4 +21,5 @@ export class Constants {
     public static clientRoot = "https://simplenetflix.vercel.app";
     public static apiRoot = "https://aks.20.44.235.37.nip.io";
     public static idpAuthority = "https://netflix-identity.azurewebsites.net";
+
 }
