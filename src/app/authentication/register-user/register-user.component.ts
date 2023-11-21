@@ -4,7 +4,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserForRegistrationDto } from 'src/app/_interface/user/userForRegistrationDto.model';
 import { Constants } from 'src/app/shared/constants';
 import { AuthService } from 'src/app/shared/services/auth.service';
-import { Router } from '@angular/router';
 @Component({
   selector: 'app-register-user',
   templateUrl: './register-user.component.html',
@@ -15,7 +14,7 @@ export class RegisterUserComponent {
   public showError: boolean = false;
   registerForm: FormGroup = new FormGroup({});
 
-  constructor(private authService: AuthService, private _router: Router) {
+  constructor(private authService: AuthService) {
   }
 
   ngOnInit() {
@@ -44,8 +43,8 @@ export class RegisterUserComponent {
       .subscribe({
         next: () => {
           console.log('User is registered');
-          // go to login page
-          this._router.navigate(['/payment/planform']);
+          // go to sign in page
+          this.authService.login();
         },
         error: (err: HttpErrorResponse) => {
           this.errorMessage = err.message;
