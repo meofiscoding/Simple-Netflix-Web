@@ -4,7 +4,7 @@ import { Stripe, loadStripe } from '@stripe/stripe-js';
 import { Constants } from '../../shared/constants';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { UserPricingPlanDTO } from 'src/app/_interface/payment/userPricingPlanDto.model';
-import { NavigationExtras, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-get-pricing-plan',
@@ -38,32 +38,32 @@ export class GetPricingPlanComponent {
     });
   }
 
-//   async redirectToPayment() {
-//     const navigationExtras: NavigationExtras = {
-//       state: {
-//         planId: this.selectedTabIndex
-//       }
-//     };
+  //   async redirectToPayment() {
+  //     const navigationExtras: NavigationExtras = {
+  //       state: {
+  //         planId: this.selectedTabIndex
+  //       }
+  //     };
 
-//     this._router.navigate(['/payment/checkout'], navigationExtras);
-//   // await this.pay(environment.stripe.publicKey);
-//   // this.apiService.postSubcription(subcriptionID).subscribe((data: any) => {
-//   //   console.log(data);
-//   // });
-// }
+  //     this._router.navigate(['/payment/checkout'], navigationExtras);
+  //   // await this.pay(environment.stripe.publicKey);
+  //   // this.apiService.postSubcription(subcriptionID).subscribe((data: any) => {
+  //   //   console.log(data);
+  //   // });
+  // }
 
   async pay(stripePublicKey: string) {
-  this.stripePromise = loadStripe(stripePublicKey);
-  const stripe = await this.stripePromise;
-  const userPayment: UserPricingPlanDTO = {
-    userId: this.currentUserId,
-    pricingPlanId: this.selectedTabIndex
+    this.stripePromise = loadStripe(stripePublicKey);
+    const stripe = await this.stripePromise;
+    const userPayment: UserPricingPlanDTO = {
+      userId: this.currentUserId,
+      pricingPlanId: this.selectedTabIndex
+    }
+    this.apiService.postData(Constants.subscriptionApi, userPayment).subscribe((response: any) => {
+      stripe?.redirectToCheckout({ sessionId: response }).then((result: any) => {
+        debugger;
+        console.log(result);
+      })
+    });
   }
-  this.apiService.postData(Constants.subscriptionApi, userPayment).subscribe((response: any) => {
-    stripe?.redirectToCheckout({ sessionId: response }).then((result: any) => {
-      debugger;
-      console.log(result);
-    })
-  });
-}
 }

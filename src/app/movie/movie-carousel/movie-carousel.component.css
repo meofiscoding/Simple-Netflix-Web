@@ -1,0 +1,92 @@
+.card {
+    width: 250px;
+    background-color: #141414;
+    border-radius: 4px;
+    transition: 0.2s linear;
+    margin: 3px;
+    position: relative;
+    box-shadow: 4px 4px 15px rgba(#000, 0.15);
+}
+
+
+.card:hover {
+    transform: scaleX(1.4) scaleY(1.4);
+    z-index: 10;
+}
+
+
+.card-body {
+    display: none;
+    /* height: 0px; */
+    padding: 10px 5px;
+    position: absolute;
+    background-color: #141414;
+    top: 120px;
+    width: 100%;
+}
+
+
+.card-icon {
+    color: #fff;
+    padding: 0px !important;
+    font-size: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.card:hover>.card-body {
+    display: block;
+    /* height: max-content !important; */
+}
+
+.netflix-card-text {
+    font-size: 12px;
+}
+
+.movie-toolbar i {
+    color: #fff;
+}
+
+.truncate-3-lines {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    font-size: 10px;
+    text-align: justify;
+    -webkit-line-clamp: 10;
+    /* Limit to 3 lines */
+    -webkit-box-orient: vertical;
+    white-space: normal;
+}
+
+.section-title {
+    text-align: left;
+    font-size: larger;
+    margin-left: 30px;
+}
+
+.card::before {
+    position: absolute;
+    top: 2.5rem;
+    right: -0.5rem;
+    z-index: -1;
+    content: '';
+    background: #283593;
+    height: 20px;
+    width: 20px;
+    transform: rotate(45deg);
+}
+
+.card::after {
+    position: absolute;
+    content: attr(data-label);
+    top: 11px;
+    /* width: 10rem; */
+    right: -14px;
+    padding: 0.5rem;
+    background: #3949ab;
+    color: white;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    box-shadow: 4px 4px 15px rgba(26, 35, 126, 0.2);
+}

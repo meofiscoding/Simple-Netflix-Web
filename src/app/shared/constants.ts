@@ -1,7 +1,8 @@
 export class Constants {
     // Role
     public static memberRole = "Member";
-    
+
+    // IDP
     public static clientId = "angular-client";
 
     // API route
@@ -11,15 +12,6 @@ export class Constants {
     public static paymentSuccessApi = "payment/success"
     public static createPaymentIntentApi = "payment/checkout"
     public static subscriptionApi = "payment/subscriptions";
-
-    // Local
-    // public static apiRoot = "https://localhost:7213";
-    // public static apiRoot = "https://localhost:5000";
-    // public static clientRoot = "http://localhost:4200";
-    // public static idpAuthority = "https://localhost:7096"
-    // Production
-    public static clientRoot = "https://simplenetflix.vercel.app";
-    public static apiRoot = "https://aks.20.44.235.37.nip.io";
-    public static idpAuthority = "https://netflix-identity.azurewebsites.net";
-
+    public static moviesApi = "movies";
+    public static moviesCategoriesApi = "movies/categories";
 }

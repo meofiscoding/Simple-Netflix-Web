@@ -12,9 +12,9 @@ import { SignoutRedirectCallbackComponent } from './signout-redirect-callback/si
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
 import { AuthInterceptorService } from './shared/services/auth-interceptor.service';
 import { ErrorHandlerService } from './shared/services/error-handler.service';
-import { MovieComponent } from './movie/movie.component';
 import { NgxStripeModule } from 'ngx-stripe';
 import { environment } from 'src/environments/environment.development';
+import { MoviePlayerComponent } from './movie/movie-player/movie-player.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,7 @@ import { environment } from 'src/environments/environment.development';
     ErrorPagesComponent,
     SigninRedirectCallbackComponent,
     SignoutRedirectCallbackComponent,
-    MovieComponent
+    MoviePlayerComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +37,7 @@ import { environment } from 'src/environments/environment.development';
       { path: 'error', component: ErrorPagesComponent },
       { path: 'authentication', loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule) },
       { path: 'payment', loadChildren: () => import('./payment/payment.module').then(m => m.PaymentModule) },
-      { path: 'movies', component: MovieComponent },
+      { path: 'movies', loadChildren: () => import('./movie/movie.module').then(m => m.MovieModule) },
       { path: 'signin-callback', component: SigninRedirectCallbackComponent },
       { path: 'signout-callback', component: SignoutRedirectCallbackComponent },
       { path: '404', component: ErrorPagesComponent },
