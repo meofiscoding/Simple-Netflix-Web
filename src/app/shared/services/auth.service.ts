@@ -98,6 +98,13 @@ export class AuthService {
       })
   }
 
+  // get current username
+  public getCurretnUserName = async (): Promise<string> => {
+    const user = await this._userManager.getUser();
+    return user?.profile.name ?? '';
+  }
+
+
   // get current userId
   public getCurrentUserId = async (): Promise<string> => {
     const user = await this._userManager.getUser();

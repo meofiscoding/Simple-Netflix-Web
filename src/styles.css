@@ -6,12 +6,15 @@
 app-menu {
     height: var(--appmenu-height);
     background-color: rgba(0, 0, 0, 0);
-    padding: 0 30px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     position: fixed;
     top: 0;
+    width: 100%;
+    z-index: 999;
+}
+
+app-movie {
+    position: absolute;
+    top: 650px;
     width: 100%;
     z-index: 999;
 }

@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthInterceptorService implements HttpInterceptor {
-  constructor(private _authService: AuthService, private _router: Router) {}
+  constructor(private _authService: AuthService, private _router: Router) { }
 
   intercept(
     req: HttpRequest<any>,
@@ -36,7 +36,15 @@ export class AuthInterceptorService implements HttpInterceptor {
               if (err.status == 401 || token == "") {
                 this._authService.login();
               } else {
-                this._router.navigate(['/home']);
+                // if user is not Member, redirect to home page
+                this._authService.checkIfUserIsMember().then((isMember) => {
+                  if (!isMember) {
+                    this._router.navigate(['/home']);
+                  }
+                  else {
+                    this._router.navigate(['/movies']);
+                  }
+                });
               }
               return err;
             });
