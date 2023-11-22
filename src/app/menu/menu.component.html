@@ -6,10 +6,9 @@
     </a>
     <div *ngIf="isUserMember" class="netflix-nav">
       <section>
-        <button>Home</button>
-        <button>TV Shows</button>
-        <button>Movies</button>
-        <button>News & Popular</button>
+        <button *ngFor="let category of moviesCategories" class="netflix-nav-item">
+          {{ category }}
+        </button>
         <button>My List</button>
       </section>
     </div>
@@ -28,8 +27,9 @@
     </div>
   </div>
   <div *ngIf="isUserAuthenticated" class="right d-flex align-items-center">
-    <i class="fa-solid fa-magnifying-glass" style="font-size: 20px; color: #fff; padding: 5px 20px"></i>
-    <i class="fa-solid fa-bell" style="font-size: 20px; color: #fff; padding: 5px 20px"></i>
+    <i class="fa-solid fa-magnifying-glass"
+      style="cursor: pointer; font-size: 20px; color: #fff; padding: 5px 20px"></i>
+    <i class="fa-solid fa-bell" style="cursor: pointer; font-size: 20px; color: #fff; padding: 5px 20px"></i>
     <div class="dropdown">
       <!-- <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button> -->
       <img class="netflix-profile dropdown-toggle" src="{{ userAvatar }}" alt="avatar" data-bs-toggle="dropdown"
