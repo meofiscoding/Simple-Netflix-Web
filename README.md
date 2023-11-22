@@ -8,6 +8,7 @@ _Movies_
 ![Login Demo](https://github.com/meofiscoding/Simple-Netflix-Web/blob/main/assets/moviesPreview.gif)
 
 _WatchingMovie_
+</br>
 ![Player Demo](https://github.com/meofiscoding/Simple-Netflix-Web/blob/main/assets/watch_movie_preview.gif)
 ## Development server
 
