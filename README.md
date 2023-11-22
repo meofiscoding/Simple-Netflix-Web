@@ -8,7 +8,7 @@ _Movies_
 ![Login Demo](https://github.com/meofiscoding/Simple-Netflix-Web/blob/main/assets/moviesPreview.gif)
 
 _WatchingMovie_
-![Player Demo](https://github.com/meofiscoding/Simple-Netflix-Web/blob/main/assets/watch_,ovie_preview.gif)
+![Player Demo](https://github.com/meofiscoding/Simple-Netflix-Web/blob/main/assets/watch_movie_preview.gif)
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
