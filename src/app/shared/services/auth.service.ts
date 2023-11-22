@@ -33,7 +33,6 @@ export class AuthService {
 
   public login = () => {
     console.log('IDP Settings:', this.idpSettings);
-    debugger;
     return this._userManager.signinRedirect();
   }
 
