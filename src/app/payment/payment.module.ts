@@ -11,8 +11,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
   declarations: [
     OrderCancelComponent,
     CheckoutComponent,
-    GetPricingPlanComponent,
-    CheckoutComponent,
+    GetPricingPlanComponent
   ],
   imports: [
     NgxStripeModule,
