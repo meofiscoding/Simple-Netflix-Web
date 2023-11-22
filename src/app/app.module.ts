@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { JwplayerComponent } from './jwplayer/jwplayer.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,7 +19,6 @@ import { MoviePlayerComponent } from './movie/movie-player/movie-player.componen
 @NgModule({
   declarations: [
     AppComponent,
-    JwplayerComponent,
     MenuComponent,
     HomeComponent,
     ErrorPagesComponent,

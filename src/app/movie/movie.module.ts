@@ -11,7 +11,7 @@ import { MoviePlayerComponent } from './movie-player/movie-player.component';
     CommonModule,
     RouterModule.forChild([
       { path: '', component: MovieComponent },
-      { path: 'movies/:id', component: MoviePlayerComponent}
+      { path: ':id', component: MoviePlayerComponent}
     ])
   ]
 })
