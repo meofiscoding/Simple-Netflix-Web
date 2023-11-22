@@ -5,7 +5,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Demo
 
 _Movies_
-![Login Demo](https://github.com/meofiscoding/Simple-Netflix-Web/blob/dev/assets/moviesPreview.gif)
+![Login Demo](https://github.com/meofiscoding/Simple-Netflix-Web/blob/main/assets/moviesPreview.gif)
 
 _WatchingMovie_
 </br>
