@@ -4,7 +4,7 @@ import { Stripe, loadStripe } from '@stripe/stripe-js';
 import { Constants } from '../../shared/constants';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { UserPricingPlanDTO } from 'src/app/_interface/payment/userPricingPlanDto.model';
-import { NavigationExtras, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-get-pricing-plan',

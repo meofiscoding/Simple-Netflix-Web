@@ -1,1 +1,3 @@
-<p>movie works!</p>
+<div *ngFor="let item of moviesByCategory">
+    <app-movie-carousel [categoryTitle]="item.title" [dataSourceUrl]="item.dataSourceUrl"></app-movie-carousel>
+</div>
