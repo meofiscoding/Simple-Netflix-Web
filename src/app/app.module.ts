@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { JwplayerComponent } from './jwplayer/jwplayer.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,16 +16,19 @@ import { ErrorHandlerService } from './shared/services/error-handler.service';
 import { MovieComponent } from './movie/movie.component';
 import { NgxStripeModule } from 'ngx-stripe';
 import { environment } from 'src/environments/environment.development';
+import { MovieCarouselComponent } from './movie/movie-carousel/movie-carousel.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    JwplayerComponent,
     MenuComponent,
     HomeComponent,
     ErrorPagesComponent,
     SigninRedirectCallbackComponent,
     SignoutRedirectCallbackComponent,
-    MovieComponent
+    MovieComponent,
+    MovieCarouselComponent
   ],
   imports: [
     BrowserModule,
