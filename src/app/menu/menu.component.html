@@ -6,8 +6,9 @@
     </a>
     <div *ngIf="isUserMember" class="netflix-nav">
       <section>
-        <button *ngFor="let category of moviesCategories" class="netflix-nav-item">
-          {{ category }}
+        <button *ngFor="let category of moviesCategories | keyvalue" class="netflix-nav-item" [routerLink]="['/movies/search']"
+          [queryParams]="{ category: category.key }" routerLinkActive="active">
+          {{ category.value }}
         </button>
         <button>My List</button>
       </section>
