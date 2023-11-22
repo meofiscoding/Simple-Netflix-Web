@@ -61,8 +61,8 @@ app-movie-search-result{
     background-color: black;
     height: 100vh;
     padding-top: var(--appmenu-height);
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
     padding-bottom: 1rem;
     overflow: hidden;
 }
