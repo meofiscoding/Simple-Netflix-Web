@@ -9,6 +9,7 @@ import { Constants } from 'src/app/shared/constants';
 import { ActivatedRoute } from '@angular/router';
 import { ApiserviceService } from 'src/app/shared/services/apiservice.service';
 import { SubscriptionCheckOutDto } from 'src/app/_interface/payment/subscriptionCheckOutDto.model';
+import { environment } from 'src/environments/environment.development';
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
@@ -62,7 +63,7 @@ export class CheckoutComponent {
   }
 
   private createPaymentIntent(amount: number): Observable<PaymentIntent> {
-    return this.http.post<PaymentIntent>(`${Constants.apiRoot}/${Constants.createPaymentIntentApi}`, this.userPricingPlan.price)
+    return this.http.post<PaymentIntent>(`${environment.apiRoot}/${Constants.createPaymentIntentApi}`, this.userPricingPlan.price)
       .pipe(map(pi => this.camelToSnakeCase(pi)));
   }
 

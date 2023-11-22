@@ -10,6 +10,7 @@ import { Observable, from, lastValueFrom } from 'rxjs';
 import { AuthService } from './auth.service';
 import { Constants } from '../constants';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +22,7 @@ export class AuthInterceptorService implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    if (req.url.startsWith(Constants.apiRoot)) {
+    if (req.url.startsWith(environment.apiRoot)) {
       return from(
         this._authService.getAccessToken().then((token) => {
           const headers = req.headers.set('Authorization', `Bearer ${token}`);
