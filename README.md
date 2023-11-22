@@ -5,10 +5,10 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Demo
 
 _Movies_
-![Login Demo](https://github.com/meofiscoding/Simple-Netflix-Web/blob/dev/assets/moviesPreview.gif)
+![Login Demo](https://github.com/meofiscoding/Simple-Netflix-Web/blob/main/assets/moviesPreview.gif)
 
 _WatchingMovie_
-![Player Demo](https://github.com/meofiscoding/Simple-Netflix-Web/blob/dev/assets/watch_,ovie_preview.gif)
+![Player Demo](https://github.com/meofiscoding/Simple-Netflix-Web/blob/main/assets/watch_,ovie_preview.gif)
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
