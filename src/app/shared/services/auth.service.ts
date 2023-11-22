@@ -6,6 +6,7 @@ import { ApiserviceService } from './apiservice.service';
 import { UserForRegistrationDto } from 'src/app/_interface/user/userForRegistrationDto.model';
 import { RegistrationResponseDto } from 'src/app/_interface/response/registrationResponseDto.model';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
@@ -18,12 +19,12 @@ export class AuthService {
   public loginChanged = this._loginChangedSubject.asObservable();
   private get idpSettings(): UserManagerSettings {
     return {
-      authority: Constants.idpAuthority, // the URI of the Identity Service
+      authority: environment.idpAuthority, // the URI of the Identity Service
       client_id: Constants.clientId, // the id of the client that consumes the Identity Service
-      redirect_uri: `${Constants.clientRoot}/signin-callback`, //  the URI to redirect to after successful authentication
+      redirect_uri: `${environment.clientRoot}/signin-callback`, //  the URI to redirect to after successful authentication
       scope: "openid profile movies payment", //  the list of supported scopes by Identity Service
       response_type: "code", // determines the flow we want to use (AllowedGrantTypes property on Identity Service)
-      post_logout_redirect_uri: `${Constants.clientRoot}/signout-callback` // the URI to redirect to after successful logout
+      post_logout_redirect_uri: `${environment.clientRoot}/signout-callback` // the URI to redirect to after successful logout
     }
   }
 
@@ -33,12 +34,11 @@ export class AuthService {
 
   public login = () => {
     console.log('IDP Settings:', this.idpSettings);
-    debugger;
     return this._userManager.signinRedirect();
   }
 
   public register = (route: string, body: UserForRegistrationDto) => {
-    return this.http.post<RegistrationResponseDto>(this.apiService.createCompleteRoute(route, Constants.idpAuthority), body);
+    return this.http.post<RegistrationResponseDto>(this.apiService.createCompleteRoute(route, environment.idpAuthority), body);
   }
 
   public isAuthenticated = (): Promise<boolean> => {
@@ -97,6 +97,13 @@ export class AuthService {
         return roleClaim === Constants.memberRole;
       })
   }
+
+  // get current username
+  public getCurretnUserName = async (): Promise<string> => {
+    const user = await this._userManager.getUser();
+    return user?.profile.name ?? '';
+  }
+
 
   // get current userId
   public getCurrentUserId = async (): Promise<string> => {
