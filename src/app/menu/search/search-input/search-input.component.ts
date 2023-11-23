@@ -46,6 +46,8 @@ export class SearchInputComponent {
       document.getElementsByClassName("img")[0].setAttribute("style", "margin-left: -290px");
     } else {
       document.getElementsByClassName("img")[0].setAttribute("style", "margin-left: 0px");
+      // publish empty string to clear the search results
+      this.inputValue.next('');      
     }
   }
 }

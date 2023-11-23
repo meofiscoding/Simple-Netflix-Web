@@ -1,12 +1,13 @@
 img {
-    width: 28px;
+    width: 24px;
     /* left: 8px; */
-    top: 53%;
+    top: 46%;
     transform: translateY(-50%);
     position: absolute;
     transition: 0.3s ease all;
 }
 input {
+    margin-top: -12px;
     width: 0px;
     height: 0px;
     background-color: #000;

@@ -41,9 +41,9 @@ export class MenuComponent {
         this.isInMoviesPage = false;
         // if route url is sub route of movies, then set background color of app-menu to black
         if (this._router.url.includes("/movies/")) {
-          document.querySelector('app-menu')?.classList.add('bg-dark');
+          document.querySelector('app-menu')?.classList.add('movie-mode');
         } else {
-          document.querySelector('app-menu')?.classList.remove('bg-dark');
+          document.querySelector('app-menu')?.classList.remove('movie-mode');
         }
       }
     })

@@ -12,6 +12,10 @@ app-menu {
     z-index: 999;
 }
 
+.movie-mode{
+    background-color: black !important;
+}
+
 app-movie {
     position: absolute;
     top: 650px;
@@ -130,7 +134,7 @@ app-movie-search-result .card:hover .card-body {
     white-space: normal;
 }
 
-app-search-component {
+app-search {
     padding: 5px 20px;
     cursor: pointer;
     display: inline-block;

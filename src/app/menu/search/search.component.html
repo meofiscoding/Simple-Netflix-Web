@@ -1,9 +1,21 @@
 <app-search-input (textChange)="onTextChange($event)"></app-search-input>
 <ng-container *ngIf="results != null">
-  <ol *ngIf="results.length > 0; else noResults">
-    <li *ngFor="let item of results">
-      {{ item.title }}
-    </li>
-  </ol>
-  <ng-template #noResults> No results </ng-template>
+    <div class="search-result" *ngIf="results.length > 0; else noResults">
+        <div class="card" style="max-width: 300px" *ngFor="let item of results">
+            <div class="row g-0">
+                <div class="col-md-2">
+                    <img src="{{item.poster}}" class="img-fluid rounded-start" alt="thumbnail" />
+                </div>
+                <div class="col-md-10">
+                    <div class="card-body">
+                        <strong [routerLink]="['/movies', item.id]" [state]="{ data: item.id }"> {{item.title}}</strong>
+                        <p class="card-text truncate-3-lines">
+                            {{item.description}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-template #noResults> </ng-template>
 </ng-container>
