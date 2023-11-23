@@ -54,6 +54,11 @@ app-home{
 app-movie-player{
     width: 100%;
     background-color: black;
+    height: 100%;
+}
+
+app-movie-player .slider{
+   margin-top: var(--appmenu-height);
 }
 
 app-movie-search-result{
@@ -67,7 +72,7 @@ app-movie-search-result{
     overflow: hidden;
 }
 
-.card {
+app-movie .card, app-movie-search-result .card {
     background-color: #141414;
     border-radius: 4px;
     transition: 0.2s linear;
@@ -75,7 +80,7 @@ app-movie-search-result{
     box-shadow: 4px 4px 15px rgba(#000, 0.15);
 }
 
-.card-body {
+app-movie-search-result .card-body, app-movie .card-body {
     display: none;
     height: 65%;
     padding: 10px 5px;
@@ -86,7 +91,7 @@ app-movie-search-result{
 }
 
 
-.card-icon {
+app-movie-search-result .card-icon, app-movie-search-result .card-icon {
     color: #fff;
     padding: 0px !important;
     font-size: 15px;
@@ -94,7 +99,8 @@ app-movie-search-result{
     cursor: pointer;
 }
 
-.card:hover>.card-body {
+app-movie .card:hover .card-body,
+app-movie-search-result .card:hover .card-body {
     display: block;
     /* height: max-content !important; */
 }
