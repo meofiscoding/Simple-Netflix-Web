@@ -10,5 +10,11 @@ export class SearchComponentComponent {
 
   toggleInput() {
     this.isInputToggled = !this.isInputToggled;
+    if (this.isInputToggled) {
+      // set margin-left of img tag to 300px
+      document.getElementsByClassName("img")[0].setAttribute("style", "margin-left: -290px");
+    }else {
+      document.getElementsByClassName("img")[0].setAttribute("style", "margin-left: 0px");
+    }
   }
 }
