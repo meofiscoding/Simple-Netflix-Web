@@ -15,6 +15,7 @@ import { ErrorHandlerService } from './shared/services/error-handler.service';
 import { NgxStripeModule } from 'ngx-stripe';
 import { environment } from 'src/environments/environment.development';
 import { MoviePlayerComponent } from './movie/movie-player/movie-player.component';
+import { SearchComponentComponent } from './menu/search-component/search-component.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { MoviePlayerComponent } from './movie/movie-player/movie-player.componen
     ErrorPagesComponent,
     SigninRedirectCallbackComponent,
     SignoutRedirectCallbackComponent,
-    MoviePlayerComponent
+    MoviePlayerComponent,
+    SearchComponentComponent
   ],
   imports: [
     BrowserModule,
