@@ -8,6 +8,10 @@ _Browsing Movies_
 ![Login Demo](https://github.com/meofiscoding/Simple-Netflix-Web/blob/main/assets/moviesPreview.gif)
 
 _Watching Movie_
+</br>
+![Player Demo](https://github.com/meofiscoding/Simple-Netflix-Web/blob/main/assets/watch_movie_preview.gif)
+</br>
+_Select Episode when watching Series_
 ![Player Demo](https://github.com/meofiscoding/Simple-Netflix-Web/blob/main/assets/movies_select_episode.gif)
 
 ## Development server
