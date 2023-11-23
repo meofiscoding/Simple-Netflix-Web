@@ -54,4 +54,72 @@ app-home{
 app-movie-player{
     width: 100%;
     background-color: black;
+    height: 100%;
+}
+
+app-movie-player .slider{
+   margin-top: var(--appmenu-height);
+}
+app-movie-search-result{
+    width: 100%;
+    background-color: black;
+    height: 100vh;
+    padding-top: var(--appmenu-height);
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 1rem;
+    overflow: hidden;
+}
+
+app-movie .card, app-movie-search-result .card {
+    background-color: #141414;
+    border-radius: 4px;
+    transition: 0.2s linear;
+    position: relative;
+    box-shadow: 4px 4px 15px rgba(#000, 0.15);
+}
+
+app-movie-search-result .card-body, app-movie .card-body {
+    display: none;
+    height: 65%;
+    padding: 10px 5px;
+    position: absolute;
+    background-color: #141414;
+    top: 120px;
+    width: 100%;
+}
+
+
+app-movie-search-result .card-icon, app-movie-search-result .card-icon {
+    color: #fff;
+    padding: 0px !important;
+    font-size: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+app-movie .card:hover .card-body,
+app-movie-search-result .card:hover .card-body {
+    display: block;
+    /* height: max-content !important; */
+}
+
+.netflix-card-text {
+    font-size: 12px;
+}
+
+.movie-toolbar i {
+    color: #fff;
+}
+
+.truncate-3-lines {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    font-size: 10px;
+    text-align: justify;
+    -webkit-line-clamp: 10;
+    /* Limit to 3 lines */
+    -webkit-box-orient: vertical;
+    white-space: normal;
 }
