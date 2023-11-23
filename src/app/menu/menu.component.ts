@@ -34,7 +34,6 @@ export class MenuComponent {
 
     // track current route
     this._router.events.subscribe((val) => {
-      console.log(this._router.url);
       // if current url is http://localhost:4200/movies only then show categories
       if (this._router.url == "/movies") {
         this.isInMoviesPage = true;

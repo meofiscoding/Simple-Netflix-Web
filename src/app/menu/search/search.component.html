@@ -1,0 +1,9 @@
+<app-search-input (textChange)="onTextChange($event)"></app-search-input>
+<ng-container *ngIf="results != null">
+  <ol *ngIf="results.length > 0; else noResults">
+    <li *ngFor="let item of results">
+      {{ item.title }}
+    </li>
+  </ol>
+  <ng-template #noResults> No results </ng-template>
+</ng-container>

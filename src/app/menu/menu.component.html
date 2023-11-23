@@ -30,7 +30,7 @@
   <div *ngIf="isUserAuthenticated" class="right d-flex align-items-center">
     <!-- <i class="fa-solid fa-magnifying-glass"
       style="cursor: pointer; font-size: 20px; color: #fff; padding: 5px 20px"></i> -->
-    <app-search-component *ngIf="isUserMember"></app-search-component>
+    <app-search *ngIf="isUserMember"></app-search>
     <i *ngIf="isUserMember" class="fa-solid fa-bell" style="cursor: pointer; font-size: 20px; color: #fff; padding: 5px 20px"></i>
     <div class="dropdown">
       <!-- <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button> -->
