@@ -1,8 +1,5 @@
 .row {
-    max-height: 100%;
-    /* Set a maximum height for the inner container */
-    overflow-y: auto;
-    /* Enable vertical scroll */
+  margin-top: 1rem;
 }
 
 .title{

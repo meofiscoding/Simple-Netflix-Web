@@ -30,7 +30,7 @@ export class MovieSearchResultComponent {
       this.queryParams = {
         Category: params["category"] ?? null,
         Query: params["query"] ?? '',
-        Page: 1
+        Page: 0
       };
 
       if (this.queryParams.Category) {
@@ -51,7 +51,7 @@ export class MovieSearchResultComponent {
 
   onPageChanged($event: PageEvent) {
      // Fetch the data for the selected page
-      this.queryParams.Page = $event.pageIndex + 1;
+      this.queryParams.Page = $event.pageIndex;
       const httpParams = new HttpParams({ fromObject: this.queryParams });
       this._apiservice.getData(Constants.moviesSearchApi, { params: httpParams }).subscribe((res: MovieSearchResultDto) => {
         console.log(res);

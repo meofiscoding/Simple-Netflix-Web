@@ -10,8 +10,7 @@
                     </strong>
                     <div class="movie-toolbar">
                         <a [routerLink]="['/movies', movie.id]" [state]="{ data: movie.id }">
-                            <i class="fa-solid fa-play card-icon"
-                                style="margin-right: 5px; color: white"></i>
+                            <i class="fa-solid fa-play card-icon" style="margin-right: 5px; color: white"></i>
                         </a>
                         <i class="fa-solid fa-circle-plus card-icon" style="color: white"></i>
                     </div>
@@ -22,5 +21,6 @@
             </div>
         </div>
     </div>
+    <app-paginator [totalItems]="totalResult" [pageSize]="pageSize"
+        (pageChanged)="onPageChanged($event)"></app-paginator>
 </div>
-<app-paginator [totalItems]="totalResult" [pageSize]="pageSize" (pageChanged)="onPageChanged($event)"></app-paginator>

@@ -3,9 +3,6 @@
     --appmenu-height: 70px;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
 app-menu {
     height: var(--appmenu-height);
     background-color: rgba(0, 0, 0, 0);
@@ -73,12 +70,12 @@ app-movie-player .slider {
 app-movie-search-result {
     width: 100%;
     background-color: black;
-    height: 100vh;
-    padding-top: var(--appmenu-height);
+    height: 100%;
     padding-left: 2rem;
     padding-right: 2rem;
     padding-bottom: 1rem;
-    overflow: hidden;
+    overflow-y: auto;
+    /* overflow: hidden; */
 }
 
 app-movie .card,
