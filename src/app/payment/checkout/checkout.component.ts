@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component, Input, ViewChild, signal } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Appearance, PaymentIntent, StripeElementsOptions } from '@stripe/stripe-js';
-import { StripePaymentElementComponent, StripeService } from 'ngx-stripe';
+import { Appearance, PaymentIntent, StripeElementsOptions, StripePaymentElementOptions } from '@stripe/stripe-js';
+import { StripePaymentElementComponent, StripeService, injectStripe } from 'ngx-stripe';
 import { map, switchMap } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 import { Constants } from 'src/app/shared/constants';
@@ -18,23 +18,35 @@ import { environment } from 'src/environments/environment.development';
 export class CheckoutComponent {
   @ViewChild(StripePaymentElementComponent)
   paymentElement!: StripePaymentElementComponent;
-  paying = false;
+
   elementsOptions: StripeElementsOptions = {
+    appearance: {
+      theme: 'stripe',
+      labels: 'floating',
+      variables: {
+        colorPrimary: '#673ab7',
+      },
+    },
     locale: 'en',
   };
+  paymentElementOptions: StripePaymentElementOptions = {
+    layout: {
+      type: 'tabs',
+      defaultCollapsed: false,
+      radios: false,
+      spacedAccordionItems: false
+    }
+  };
+
+  stripe = injectStripe(environment.stripe.publicKey);
+  paying = signal(false);
+  
   paymentElementForm: FormGroup = this.fb.group({});
   userPricingPlan: SubscriptionCheckOutDto = {
     planType: "",
     price: 0,
   };
   planId: number = 0;
-  appearance: Appearance = {
-    theme: 'stripe',
-    labels: 'floating',
-    variables: {
-      colorPrimary: '#673ab7',
-    },
-  };
 
   constructor(
     private http: HttpClient,
@@ -79,13 +91,15 @@ export class CheckoutComponent {
   }
 
   pay(): void {
-    this.paying = true;
+    if (this.paying() || this.paymentElementForm.invalid) return;
+    this.paying.set(true);
+
     this.stripeService.confirmPayment({
       elements: this.paymentElement.elements,
       confirmParams: {
       }, redirect: 'if_required'
     }).subscribe((result) => {
-      this.paying = false;
+      this.paying.set(false);
       if (result.error) {
         alert({ success: false, error: result.error.message });
       } else {
@@ -93,6 +107,7 @@ export class CheckoutComponent {
         if (result.paymentIntent.status === 'succeeded') {
           // TODO: call api to update user's membership
           this.apiService.postData(Constants.paymentSuccessApi, this.planId).subscribe((data: any) => {
+            debugger;
             if (data) {
               alert({ success: true });
             }
