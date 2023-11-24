@@ -1,8 +1,11 @@
 .search-result {
     background-color: #fff;
-    position: absolute;
     height: 550px;
     overflow: auto;
+}
+
+.result-container {
+    position: absolute;
 }
 
 .search-result div:hover {
@@ -22,4 +25,8 @@
 
 .card{
     border: none !important;
+}
+
+.navigation-link{
+    text-align: center;
 }

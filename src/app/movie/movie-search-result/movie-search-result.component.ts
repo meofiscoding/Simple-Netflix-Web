@@ -44,7 +44,7 @@ export class MovieSearchResultComponent {
       this._apiservice.getData(Constants.moviesSearchApi, { params: httpParams }).subscribe((res: MovieSearchResultDto) => {
         console.log(res);
         this.moviesResult = res.data;
-        this.totalResult = res.totalResult;
+        this.totalResult = res.totalResults;
       });
     });
   }
@@ -56,7 +56,7 @@ export class MovieSearchResultComponent {
       this._apiservice.getData(Constants.moviesSearchApi, { params: httpParams }).subscribe((res: MovieSearchResultDto) => {
         console.log(res);
         this.moviesResult = res.data;
-        this.totalResult = res.totalResult;
+        this.totalResult = res.totalResults;
       });
   }
 }
