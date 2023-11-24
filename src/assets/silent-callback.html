@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1024, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Silent-Callback</title>
+    <script src="/assets/js/oidc-client.min.js"></script>
+  </head>
+  <body>
+    <script>
+      const idpSettings = {
+        authority: "https://localhost:7096", // the URI of the Identity Service
+        client_id: "angular-client", // the id of the client that consumes the Identity Service
+        scope: "openid profile movies payment", //  the list of supported scopes by Identity Service
+        response_type: "code", // determines the flow we want to use (AllowedGrantTypes property on Identity Service)
+      };
+
+      new Oidc.UserManager(idpSettings)
+        .signinSilentCallback()
+        .catch((error) => {
+          console.log(error);
+        });
+    </script>
+  </body>
+</html>

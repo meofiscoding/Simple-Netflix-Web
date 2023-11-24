@@ -1,15 +1,17 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component, ViewChild, signal } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Appearance, PaymentIntent, StripeElementsOptions } from '@stripe/stripe-js';
-import { StripePaymentElementComponent, StripeService } from 'ngx-stripe';
+import { PaymentIntent, StripeElementsOptions, StripePaymentElementOptions } from '@stripe/stripe-js';
+import { StripePaymentElementComponent, injectStripe } from 'ngx-stripe';
 import { map, switchMap } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 import { Constants } from 'src/app/shared/constants';
-import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { ApiserviceService } from 'src/app/shared/services/apiservice.service';
 import { SubscriptionCheckOutDto } from 'src/app/_interface/payment/subscriptionCheckOutDto.model';
 import { environment } from 'src/environments/environment.development';
+import { AuthService } from 'src/app/shared/services/auth.service';
+
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
@@ -18,30 +20,42 @@ import { environment } from 'src/environments/environment.development';
 export class CheckoutComponent {
   @ViewChild(StripePaymentElementComponent)
   paymentElement!: StripePaymentElementComponent;
-  paying = false;
+
   elementsOptions: StripeElementsOptions = {
+    appearance: {
+      theme: 'stripe',
+      labels: 'floating',
+      variables: {
+        colorPrimary: '#673ab7',
+      },
+    },
     locale: 'en',
   };
+  paymentElementOptions: StripePaymentElementOptions = {
+    layout: {
+      type: 'tabs',
+      defaultCollapsed: false,
+      radios: false,
+      spacedAccordionItems: false
+    }
+  };
+
+  stripe = injectStripe(environment.stripe.publicKey);
+  paying = signal(false);
+  
   paymentElementForm: FormGroup = this.fb.group({});
   userPricingPlan: SubscriptionCheckOutDto = {
     planType: "",
     price: 0,
   };
   planId: number = 0;
-  appearance: Appearance = {
-    theme: 'stripe',
-    labels: 'floating',
-    variables: {
-      colorPrimary: '#673ab7',
-    },
-  };
 
   constructor(
     private http: HttpClient,
     private fb: FormBuilder,
-    private stripeService: StripeService,
-    private _router: ActivatedRoute,
-    private apiService: ApiserviceService
+    private _router: Router,
+    private apiService: ApiserviceService,
+    private authService: AuthService,
   ) { }
 
   ngOnInit() {
@@ -79,24 +93,30 @@ export class CheckoutComponent {
   }
 
   pay(): void {
-    this.paying = true;
-    this.stripeService.confirmPayment({
+    if (this.paying() || this.paymentElementForm.invalid) return;
+    this.paying.set(true);
+
+    this.stripe.confirmPayment({
       elements: this.paymentElement.elements,
       confirmParams: {
       }, redirect: 'if_required'
     }).subscribe((result) => {
-      this.paying = false;
+      this.paying.set(false);
       if (result.error) {
         alert({ success: false, error: result.error.message });
       } else {
         // The payment has been processed!
         if (result.paymentIntent.status === 'succeeded') {
           // TODO: call api to update user's membership
-          this.apiService.postData(Constants.paymentSuccessApi, this.planId).subscribe((data: any) => {
-            if (data) {
-              alert({ success: true });
-            }
-          });
+          this.apiService.postData(Constants.paymentSuccessApi, this.planId).subscribe(
+            // if status is 200, redirect to home page
+            (data: any) => {
+              // logout user
+              this.authService.signinSilent().then(() => {
+                this._router.navigate(['/movies']);
+              });
+            },
+          );
         }
       }
     });

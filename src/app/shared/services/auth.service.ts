@@ -24,7 +24,9 @@ export class AuthService {
       redirect_uri: `${environment.clientRoot}/signin-callback`, //  the URI to redirect to after successful authentication
       scope: "openid profile movies payment", //  the list of supported scopes by Identity Service
       response_type: "code", // determines the flow we want to use (AllowedGrantTypes property on Identity Service)
-      post_logout_redirect_uri: `${environment.clientRoot}/signout-callback` // the URI to redirect to after successful logout
+      post_logout_redirect_uri: `${environment.clientRoot}/signout-callback`, // the URI to redirect to after successful logout
+      automaticSilentRenew: true,
+      silent_redirect_uri: `${environment.clientRoot}/assets/silent-callback.html`,
     }
   }
 
@@ -112,5 +114,10 @@ export class AuthService {
     const userId = user?.profile.sub;
     console.log(userId);
     return userId ?? '';
+  }
+
+  // signin silent
+  public signinSilent = (): Promise<User> => {
+    return this._userManager.signinSilent();
   }
 }

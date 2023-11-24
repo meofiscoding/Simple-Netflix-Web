@@ -73,7 +73,6 @@ export class MoviePlayerComponent {
   }
 
   changeEpisode(episodeNumber: number) {
-    debugger;
     this.currentUrl = Object.values(this.streamingUrls)[episodeNumber];
     this.hlsPlayer.loadSource(this.currentUrl);
     this.hlsPlayer.attachMedia(this.videoElement);

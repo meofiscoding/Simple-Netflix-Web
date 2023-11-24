@@ -4,11 +4,9 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpHeaders,
 } from '@angular/common/http';
 import { Observable, from, lastValueFrom } from 'rxjs';
 import { AuthService } from './auth.service';
-import { Constants } from '../constants';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.development';
 
@@ -27,7 +25,6 @@ export class AuthInterceptorService implements HttpInterceptor {
         this._authService.getAccessToken().then((token) => {
           const headers = req.headers.set('Authorization', `Bearer ${token}`);
           const authReq = req.clone({ headers });
-          debugger;
           // if response is 404 and user is not logged in, redirect to login page, else redirect to home page
           return lastValueFrom(next.handle(authReq))
             .then((res) => {
