@@ -103,7 +103,7 @@ export class CheckoutComponent {
     }).subscribe((result) => {
       this.paying.set(false);
       if (result.error) {
-        alert({ success: false, error: result.error.message });
+        alert("Payment failed");
       } else {
         // The payment has been processed!
         if (result.paymentIntent.status === 'succeeded') {
