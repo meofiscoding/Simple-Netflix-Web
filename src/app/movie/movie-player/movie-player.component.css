@@ -1,4 +1,33 @@
-#player {
-    width: 100%;
+.slider {
+    border: solid 1pt black;
+    position: absolute;
+    right: 0;
+    top: 50px;
+    bottom: 50px;
+    width: 25px;
     height: 100%;
-  }
+}
+#slider-menu {
+    color: white;
+    position: relative;
+    left: 0px;
+    height: calc(100vh - var(--appmenu-height) * 2);
+    overflow: auto;
+    width: 300px;
+    transition: 1s;
+    /* Transition time back to this position */
+    background-color: #250902;
+    border-top: 4pt solid #800e13;
+    border-left: 4pt solid #800e13;
+    border-bottom: 4pt solid #800e13;
+    border-radius: 25px;
+}
+#slider-menu:hover {
+    transition: 1s;
+    /* Transition time to open */
+    left: -270px;
+}
+
+.card-body {
+    display: block !important;
+}

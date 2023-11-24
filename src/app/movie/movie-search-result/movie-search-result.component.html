@@ -1,0 +1,26 @@
+<div class="row">
+    <strong class="text-white title">{{ categoryTitle }}</strong>
+    <div class="col-sm-4 col-md-2 col-lg-2 mb-3 movie-item" *ngFor="let movie of moviesResult">
+        <div class="card">
+            <img class="card-img-top" [src]="movie.poster" alt="Card image cap" />
+            <div class="card-body">
+                <section class="d-flex justify-content-between">
+                    <strong class="netflix-card-text text-white text-left">
+                        {{ movie.movieName }}
+                    </strong>
+                    <div class="movie-toolbar">
+                        <a [routerLink]="['/movies', movie.id]" [state]="{ data: movie.id }">
+                            <i class="fa-solid fa-play card-icon" style="margin-right: 5px; color: white"></i>
+                        </a>
+                        <i class="fa-solid fa-circle-plus card-icon" style="color: white"></i>
+                    </div>
+                </section>
+                <span class="netflix-card-text text-white truncate-lines">
+                    {{ movie.description }}
+                </span>
+            </div>
+        </div>
+    </div>
+    <app-paginator [totalItems]="totalResult" [pageSize]="pageSize"
+        (pageChanged)="onPageChanged($event)"></app-paginator>
+</div>
