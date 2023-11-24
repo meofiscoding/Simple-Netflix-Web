@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 import { ApiserviceService } from 'src/app/shared/services/apiservice.service';
 import { SubscriptionCheckOutDto } from 'src/app/_interface/payment/subscriptionCheckOutDto.model';
 import { environment } from 'src/environments/environment.development';
+import { AuthService } from 'src/app/shared/services/auth.service';
+
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
@@ -52,7 +54,8 @@ export class CheckoutComponent {
     private http: HttpClient,
     private fb: FormBuilder,
     private _router: Router,
-    private apiService: ApiserviceService
+    private apiService: ApiserviceService,
+    private authService: AuthService,
   ) { }
 
   ngOnInit() {
@@ -108,8 +111,10 @@ export class CheckoutComponent {
           this.apiService.postData(Constants.paymentSuccessApi, this.planId).subscribe(
             // if status is 200, redirect to home page
             (data: any) => {
-              // navigate to movies page
-              this._router.navigate(['/movies']);
+              // logout user
+              this.authService.signinSilent().then(() => {
+                this._router.navigate(['/movies']);
+              });
             },
           );
         }
