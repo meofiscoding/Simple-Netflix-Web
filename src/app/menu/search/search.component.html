@@ -20,7 +20,7 @@
             </div>
         </div>
         <div class="navigation-link bg-dark text-white py-2">
-            <a [routerLink]="['/all-results']">View All {{results.totalResults}} Results</a>
+            <a [routerLink]="['/movies/search']" [queryParams]="{ query: searchTerm }" routerLinkActive="active">View All {{results.totalResults}} Results</a>
         </div>
     </div>
     <ng-template #noResults> </ng-template>

@@ -13,11 +13,13 @@ export class SearchComponent {
   results: MovieSearchResultDto | undefined;
 
   searchRequestSubscriptions: Subscription[] = [];
+  searchTerm: string = '';
 
   constructor(private apiservice: ApiserviceService) { 
   }
 
   onTextChange(changedText: string) {
+    this.searchTerm = changedText;
     this.cancelPendingRequests();
     const starWarsSubscription = this.apiservice
       .getData(Constants.moviesSearchApi, { params: { query: changedText } })
