@@ -8,7 +8,7 @@ import {
 import { Observable, from, lastValueFrom } from 'rxjs';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
-import { environment } from 'src/environments/environment.development';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
