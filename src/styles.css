@@ -122,13 +122,12 @@ app-movie-search-result .card:hover .card-body {
     color: #fff;
 }
 
-.truncate-3-lines {
+.truncate-lines {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
     font-size: 10px;
     text-align: justify;
-    -webkit-line-clamp: 10;
     /* Limit to 3 lines */
     -webkit-box-orient: vertical;
     white-space: normal;

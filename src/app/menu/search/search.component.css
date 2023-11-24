@@ -11,16 +11,8 @@
 .search-result div:hover {
     opacity: 0.8;
 }
-.truncate-3-lines {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    font-size: 10px;
-    text-align: justify;
+.truncate-lines {
     -webkit-line-clamp: 3;
-    /* Limit to 3 lines */
-    -webkit-box-orient: vertical;
-    white-space: normal;
 }
 
 .card{
