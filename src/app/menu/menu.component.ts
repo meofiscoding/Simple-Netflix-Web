@@ -34,7 +34,6 @@ export class MenuComponent {
 
     // track current route
     this._router.events.subscribe((val) => {
-      console.log(this._router.url);
       // if current url is http://localhost:4200/movies only then show categories
       if (this._router.url == "/movies") {
         this.isInMoviesPage = true;
@@ -42,9 +41,9 @@ export class MenuComponent {
         this.isInMoviesPage = false;
         // if route url is sub route of movies, then set background color of app-menu to black
         if (this._router.url.includes("/movies/")) {
-          document.querySelector('app-menu')?.classList.add('bg-dark');
+          document.querySelector('app-menu')?.classList.add('movie-mode');
         } else {
-          document.querySelector('app-menu')?.classList.remove('bg-dark');
+          document.querySelector('app-menu')?.classList.remove('movie-mode');
         }
       }
     })

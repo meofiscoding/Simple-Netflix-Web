@@ -1,4 +1,7 @@
 export class Constants {
+    // Pagination
+    public static pageSize = 12;
+
     // Role
     public static memberRole = "Member";
 

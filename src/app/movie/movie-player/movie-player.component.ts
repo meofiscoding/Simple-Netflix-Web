@@ -40,6 +40,9 @@ export class MoviePlayerComponent {
 
     this.apiService.getData(Constants.moviesApi + "/" + this.movieId).subscribe((data: any) => {
       this.streamingUrls = data.streamingUrls;
+      if(!this.streamingUrls){
+        console.log("No streaming urls found");
+      }
       this.currentUrl = Object.values(this.streamingUrls)[0];
       this.isSeries = data.isSeries;
       this.thumbnail = data.poster ?? './assets/images/blank_thumbnail.png'

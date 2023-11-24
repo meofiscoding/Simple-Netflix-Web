@@ -1,8 +1,5 @@
 .row {
-    max-height: 100%;
-    /* Set a maximum height for the inner container */
-    overflow-y: auto;
-    /* Enable vertical scroll */
+  margin-top: 1rem;
 }
 
 .title{
@@ -13,6 +10,11 @@
 }
 
 .card:hover {
+    margin-left: 10px;
     transform: scaleX(1.2) scaleY(1.2);
     z-index: 10;
+}
+
+.truncate-lines{
+    -webkit-line-clamp: 7;
 }

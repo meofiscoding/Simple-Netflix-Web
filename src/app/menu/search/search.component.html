@@ -1,0 +1,27 @@
+<app-search-input (textChange)="onTextChange($event)"></app-search-input>
+<ng-container *ngIf="results != null">
+    <div class="result-container"  *ngIf="results.data.length > 0; else noResults">
+        <div class="search-result bg-dark">
+            <div class="card px-2 bg-dark text-white" style="max-width: 300px" *ngFor="let item of results.data">
+                <div class="row g-0" style="align-items: center">
+                    <div class="col-md-2">
+                        <img src="{{ item.poster }}" class="img-fluid rounded-start" alt="thumbnail" />
+                    </div>
+                    <div class="col-md-10">
+                        <div class="card-body">
+                            <strong [routerLink]="['/movies', item.id]" [state]="{ data: item.id }">
+                                {{ item.title }}</strong>
+                            <p class="card-text truncate-lines">
+                                {{ item.description }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="navigation-link bg-dark text-white py-2">
+            <a [routerLink]="['/movies/search']" [queryParams]="{ query: searchTerm }" routerLinkActive="active">View All {{results.totalResults}} Results</a>
+        </div>
+    </div>
+    <ng-template #noResults> </ng-template>
+</ng-container>

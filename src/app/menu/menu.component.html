@@ -6,8 +6,8 @@
     </a>
     <div *ngIf="isUserMember" class="netflix-nav">
       <section>
-        <button *ngFor="let category of moviesCategories | keyvalue" class="netflix-nav-item" [routerLink]="['/movies/search']"
-          [queryParams]="{ category: category.key }" routerLinkActive="active">
+        <button *ngFor="let category of moviesCategories | keyvalue" class="netflix-nav-item"
+          [routerLink]="['/movies/search']" [queryParams]="{ category: category.key }" routerLinkActive="active">
           {{ category.value }}
         </button>
         <button>My List</button>
@@ -27,10 +27,11 @@
       </ul>
     </div>
   </div>
-  <div *ngIf="isUserAuthenticated" class="right d-flex align-items-center">
-    <i class="fa-solid fa-magnifying-glass"
-      style="cursor: pointer; font-size: 20px; color: #fff; padding: 5px 20px"></i>
-    <i class="fa-solid fa-bell" style="cursor: pointer; font-size: 20px; color: #fff; padding: 5px 20px"></i>
+  <div *ngIf="isUserAuthenticated" class="right d-flex align-items-start">
+    <!-- <i class="fa-solid fa-magnifying-glass"
+      style="cursor: pointer; font-size: 20px; color: #fff; padding: 5px 20px"></i> -->
+    <app-search *ngIf="isUserMember"></app-search>
+    <i *ngIf="isUserMember" class="fa-solid fa-bell" style="cursor: pointer; font-size: 20px; color: #fff; padding: 5px 20px"></i>
     <div class="dropdown">
       <!-- <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button> -->
       <img class="netflix-profile dropdown-toggle" src="{{ userAvatar }}" alt="avatar" data-bs-toggle="dropdown"
@@ -61,8 +62,8 @@
             Play Now
           </button>
           <button class="btn btn-secondary m-2">
-            <i class="fa-solid fa-circle-info" style="padding: 0%"></i> More
-            Info
+            <i class="fa-solid fa-circle-info" style="padding: 0%"></i>
+            More Info
           </button>
         </div>
       </section>
