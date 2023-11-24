@@ -3,6 +3,9 @@
     --appmenu-height: 70px;
 }
 
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
 app-menu {
     height: var(--appmenu-height);
     background-color: rgba(0, 0, 0, 0);
@@ -138,5 +141,7 @@ app-search {
     cursor: pointer;
     display: inline-block;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+mat-paginator{
+    margin-top: 2rem !important;
+}
