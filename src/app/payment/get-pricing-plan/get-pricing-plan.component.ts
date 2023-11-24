@@ -61,7 +61,6 @@ export class GetPricingPlanComponent {
     }
     this.apiService.postData(Constants.subscriptionApi, userPayment).subscribe((response: any) => {
       stripe?.redirectToCheckout({ sessionId: response }).then((result: any) => {
-        debugger;
         console.log(result);
       })
     });

@@ -22,7 +22,6 @@ export class MovieComponent {
 
   fetchCategories() {
     this._apiService.getData(Constants.moviesTagsApi).subscribe(res => {
-      debugger;
       // append the categories to the list
       this.tags = this.tags.concat(res);
       this.moviesByTag = this.tags.map((tag: any) => {
