@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { Constants } from 'src/app/shared/constants';
 import { ApiserviceService } from 'src/app/shared/services/apiservice.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
 

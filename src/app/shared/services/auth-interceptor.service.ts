@@ -4,11 +4,9 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpHeaders,
 } from '@angular/common/http';
 import { Observable, from, lastValueFrom } from 'rxjs';
 import { AuthService } from './auth.service';
-import { Constants } from '../constants';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.development';
 

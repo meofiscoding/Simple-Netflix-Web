@@ -1,12 +1,12 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, ViewChild, signal } from '@angular/core';
+import { Component, ViewChild, signal } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Appearance, PaymentIntent, StripeElementsOptions, StripePaymentElementOptions } from '@stripe/stripe-js';
-import { StripePaymentElementComponent, StripeService, injectStripe } from 'ngx-stripe';
+import { PaymentIntent, StripeElementsOptions, StripePaymentElementOptions } from '@stripe/stripe-js';
+import { StripePaymentElementComponent, injectStripe } from 'ngx-stripe';
 import { map, switchMap } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 import { Constants } from 'src/app/shared/constants';
-import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { ApiserviceService } from 'src/app/shared/services/apiservice.service';
 import { SubscriptionCheckOutDto } from 'src/app/_interface/payment/subscriptionCheckOutDto.model';
 import { environment } from 'src/environments/environment.development';
@@ -51,8 +51,7 @@ export class CheckoutComponent {
   constructor(
     private http: HttpClient,
     private fb: FormBuilder,
-    private stripeService: StripeService,
-    private _router: ActivatedRoute,
+    private _router: Router,
     private apiService: ApiserviceService
   ) { }
 
@@ -94,7 +93,7 @@ export class CheckoutComponent {
     if (this.paying() || this.paymentElementForm.invalid) return;
     this.paying.set(true);
 
-    this.stripeService.confirmPayment({
+    this.stripe.confirmPayment({
       elements: this.paymentElement.elements,
       confirmParams: {
       }, redirect: 'if_required'
@@ -106,12 +105,13 @@ export class CheckoutComponent {
         // The payment has been processed!
         if (result.paymentIntent.status === 'succeeded') {
           // TODO: call api to update user's membership
-          this.apiService.postData(Constants.paymentSuccessApi, this.planId).subscribe((data: any) => {
-            debugger;
-            if (data) {
-              alert({ success: true });
-            }
-          });
+          this.apiService.postData(Constants.paymentSuccessApi, this.planId).subscribe(
+            // if status is 200, redirect to home page
+            (data: any) => {
+              // navigate to movies page
+              this._router.navigate(['/movies']);
+            },
+          );
         }
       }
     });
