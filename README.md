@@ -4,15 +4,16 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Demo
 
-_Browsing Movies_
-![Login Demo](https://github.com/meofiscoding/Simple-Netflix-Web/blob/main/assets/moviesPreview.gif)
+_Browse Movies_
+![Login Demo](https://github.com/meofiscoding/Simple-Netflix-Web/blob/main/assets/browse_movie.gif)
 
 _Watching Movie_
 </br>
 ![Player Demo](https://github.com/meofiscoding/Simple-Netflix-Web/blob/main/assets/watch_movie_preview.gif)
+
+_Select Episode_
 </br>
-_Select Episode when watching Series_
-![Player Demo](https://github.com/meofiscoding/Simple-Netflix-Web/blob/main/assets/movies_select_episode.gif)
+![Player Demo](https://github.com/meofiscoding/Simple-Netflix-Web/blob/main/assets/select_episode.gif)
 
 ## Development server
 

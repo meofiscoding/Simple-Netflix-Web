@@ -12,6 +12,10 @@ app-menu {
     z-index: 999;
 }
 
+.movie-mode{
+    background-color: black !important;
+}
+
 app-movie {
     position: absolute;
     top: 650px;
@@ -19,16 +23,16 @@ app-movie {
     z-index: 999;
 }
 
-app-get-pricing-plan{
+app-get-pricing-plan {
     animation: form ease-in-out 0.6s;
-    height: 100vh;    
+    height: 100vh;
 }
 
-app-checkout{
+app-checkout {
     width: 30%;
 }
 
-body{
+body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
@@ -38,20 +42,103 @@ body.bg-home {
 }
 
 .centered-container {
-   font-family: sans-serif;
-  display: flex;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  height: calc(100vh - var(--appmenu-height)); /* Adjusted height */
-  margin-top: var(--appmenu-height); /* Margin for AppMenu */
+    font-family: sans-serif;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - var(--appmenu-height));
+    /* Adjusted height */
+    margin-top: var(--appmenu-height);
+    /* Margin for AppMenu */
 }
 
-app-home{
+app-home {
     color: #fff;
 }
 
-app-movie-player{
+app-movie-player {
     width: 100%;
     background-color: black;
+    height: 100%;
+}
+
+app-movie-player .slider {
+    margin-top: var(--appmenu-height);
+}
+
+app-movie-search-result {
+    width: 100%;
+    background-color: black;
+    height: 100%;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 1rem;
+    overflow-y: auto;
+    /* overflow: hidden; */
+}
+
+app-movie .card,
+app-movie-search-result .card {
+    background-color: #141414;
+    border-radius: 4px;
+    transition: 0.2s linear;
+    position: relative;
+    box-shadow: 4px 4px 15px rgba(#000, 0.15);
+}
+
+app-movie-search-result .card-body,
+app-movie .card-body {
+    display: none;
+    height: 65%;
+    padding: 10px 5px;
+    position: absolute;
+    background-color: #141414;
+    top: 120px;
+    width: 100%;
+}
+
+
+app-movie-search-result .card-icon,
+app-movie-search-result .card-icon {
+    color: #fff;
+    padding: 0px !important;
+    font-size: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+app-movie .card:hover .card-body,
+app-movie-search-result .card:hover .card-body {
+    display: block;
+    /* height: max-content !important; */
+}
+
+.netflix-card-text {
+    font-size: 12px;
+}
+
+.movie-toolbar i {
+    color: #fff;
+}
+
+.truncate-lines {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    font-size: 10px;
+    text-align: justify;
+    /* Limit to 3 lines */
+    -webkit-box-orient: vertical;
+    white-space: normal;
+}
+
+app-search {
+    padding: 5px 20px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+mat-paginator{
+    margin-top: 2rem !important;
 }

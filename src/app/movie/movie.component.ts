@@ -8,8 +8,8 @@ import { Constants } from '../shared/constants';
   styleUrls: ['./movie.component.css']
 })
 export class MovieComponent {
-  categories: any = [];
-  moviesByCategory: any = [];
+  tags: any = [];
+  moviesByTag: any = [];
 
   constructor(private _apiService: ApiserviceService) {
     // TODO: implement later
@@ -21,14 +21,14 @@ export class MovieComponent {
   }
 
   fetchCategories() {
-    this._apiService.getData(Constants.moviesCategoriesApi).subscribe(res => {
+    this._apiService.getData(Constants.moviesTagsApi).subscribe(res => {
       debugger;
       // append the categories to the list
-      this.categories = this.categories.concat(res);
-      this.moviesByCategory = this.categories.map((category: any) => {
+      this.tags = this.tags.concat(res);
+      this.moviesByTag = this.tags.map((tag: any) => {
         return {
-          title: category,
-          dataSourceUrl: `${Constants.moviesApi}?tag=${category}`
+          title: tag,
+          dataSourceUrl: `tag/${tag}`
         };
       });
     });

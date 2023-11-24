@@ -1,0 +1,24 @@
+.search-result {
+    background-color: #fff;
+    height: 550px;
+    overflow: auto;
+}
+
+.result-container {
+    position: absolute;
+}
+
+.search-result div:hover {
+    opacity: 0.8;
+}
+.truncate-lines {
+    -webkit-line-clamp: 3;
+}
+
+.card{
+    border: none !important;
+}
+
+.navigation-link{
+    text-align: center;
+}
