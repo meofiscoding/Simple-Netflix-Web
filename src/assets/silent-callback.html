@@ -10,7 +10,9 @@
   <body>
     <script>
       const idpSettings = {
-        authority: "https://localhost:7096", // the URI of the Identity Service
+        // TODO: need to update when deploying to production
+        authority: "https://netflix-identity.azurewebsites.net",
+        //authority: "https://localhost:7096", // the URI of the Identity Service
         client_id: "angular-client", // the id of the client that consumes the Identity Service
         scope: "openid profile movies payment", //  the list of supported scopes by Identity Service
         response_type: "code", // determines the flow we want to use (AllowedGrantTypes property on Identity Service)
