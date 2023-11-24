@@ -6,7 +6,7 @@
 <div id="carouselExampleInterval" class="carousel slide px-4" data-bs-ride="carousel">
     <div class="carousel-inner" style="position: relative; overflow: visible">
         <div *ngFor="let movie of moviesList; let isFirst = first"
-            [ngClass]="{ 'carousel-item': true, active: isFirst }" data-bs-interval="3000">
+            [ngClass]="{ 'carousel-item': true, active: isFirst }" data-bs-interval="2000">
             <section class="d-flex">
                 <div class="card" *ngFor="let item of movie" [attr.data-label]="item.status">
                     <img src="{{ item.poster }}" class="card-img-top" alt="..." />

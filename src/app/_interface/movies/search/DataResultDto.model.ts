@@ -1,4 +1,4 @@
-export interface MovieSearchResultDto {
+export interface DataResultDto {
     id: number;
     poster: string;
     title: string;

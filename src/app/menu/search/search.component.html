@@ -1,8 +1,8 @@
 <app-search-input (textChange)="onTextChange($event)"></app-search-input>
 <ng-container *ngIf="results != null">
-    <div class="search-result" *ngIf="results.length > 0; else noResults">
-        <div class="card" style="max-width: 300px" *ngFor="let item of results">
-            <div class="row g-0">
+    <div class="search-result bg-dark" *ngIf="results.data.length > 0; else noResults">
+        <div class="card px-2 bg-dark text-white" style="max-width: 300px" *ngFor="let item of results.data">
+            <div class="row g-0" style="align-items: center">
                 <div class="col-md-2">
                     <img src="{{item.poster}}" class="img-fluid rounded-start" alt="thumbnail" />
                 </div>

@@ -17,6 +17,7 @@ import { environment } from 'src/environments/environment.development';
 import { MoviePlayerComponent } from './movie/movie-player/movie-player.component';
 import { SearchComponent } from './menu/search/search.component';
 import { SearchInputComponent } from './menu/search/search-input/search-input.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { SearchInputComponent } from './menu/search/search-input/search-input.co
       { path: '', redirectTo: '/home', pathMatch: 'full' },
       { path: '**', redirectTo: '/404', pathMatch: 'full' },
     ]),
-    NgxStripeModule.forRoot(environment.stripe.publicKey)
+    NgxStripeModule.forRoot(environment.stripe.publicKey),
+    BrowserAnimationsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true },
