@@ -22,18 +22,12 @@
   <div class="plan-grid">
     <div class="planGrid__header">
       <div class="planSelector" *ngFor="let plan of pricingPlansList">
-        <input
-          class="tab-input"
-          type="radio"
-          name="radiotab"
-          [id]="'tab-' + plan.id"
-          [checked]="plan.id === selectedTabIndex"
-          (change)="selectTab(plan.id)"
-        />
+        <input class="tab-input" type="radio" name="radiotab" [id]="'tab-' + plan.id"
+          [checked]="plan.id === selectedTabIndex" (change)="selectTab(plan.id)" />
         <div class="label">
           <label class="tab-label text-table-head" [for]="'tab-' + plan.id">{{
             plan.planType
-          }}</label>
+            }}</label>
         </div>
       </div>
     </div>
@@ -43,45 +37,26 @@
     <tbody>
       <tr>
         <th>Monthly price</th>
-        <td
-          class="text-content"
-          *ngFor="let plan of pricingPlansList"
-          [class.selected]="plan.id === selectedTabIndex"
-        >
+        <td class="text-content" *ngFor="let plan of pricingPlansList" [class.selected]="plan.id === selectedTabIndex">
           {{ plan.price }}
         </td>
       </tr>
       <tr>
         <th>Video quality</th>
-        <td
-          class="text-content"
-          *ngFor="let plan of pricingPlansList"
-          [class.selected]="plan.id === selectedTabIndex"
-        >
+        <td class="text-content" *ngFor="let plan of pricingPlansList" [class.selected]="plan.id === selectedTabIndex">
           {{ plan.videoQuality }}
         </td>
       </tr>
       <tr>
         <th>Resolution</th>
-        <td
-          class="text-content"
-          *ngFor="let plan of pricingPlansList"
-          [class.selected]="plan.id === selectedTabIndex"
-        >
+        <td class="text-content" *ngFor="let plan of pricingPlansList" [class.selected]="plan.id === selectedTabIndex">
           {{ plan.resolution }}
         </td>
       </tr>
       <tr>
         <th>Devices you can use to watch</th>
-        <td
-          class="text-content"
-          *ngFor="let plan of pricingPlansList"
-          [class.selected]="plan.id === selectedTabIndex"
-        >
-          <div
-            *ngFor="let device of plan.devices"
-            class="device-list margin-inline"
-          >
+        <td class="text-content" *ngFor="let plan of pricingPlansList" [class.selected]="plan.id === selectedTabIndex">
+          <div *ngFor="let device of plan.devices" class="device-list margin-inline">
             <i class="fas fa-{{ device.toLowerCase() }} text-icon"></i>
             <span class="text-icon-1">{{ device }}</span>
           </div>
@@ -106,12 +81,13 @@
   </div>
 
   <!-- Submit -->
-  <button
+  <!-- <button
     class="btn-plan margin-inline"
     type="button"
     [routerLink]="['/payment/checkout']"
     [state]="{ data: selectedTabIndex }"
-  >
+  > -->
+  <button class="btn-plan margin-inline" type="button" (click)="pay()">
     Next
   </button>
 </section>

@@ -9,7 +9,7 @@ import { ErrorPagesComponent } from './error-pages/error-pages.component';
 import { RouterModule } from '@angular/router';
 import { SigninRedirectCallbackComponent } from './signin-redirect-callback/signin-redirect-callback.component';
 import { SignoutRedirectCallbackComponent } from './signout-redirect-callback/signout-redirect-callback.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptorService } from './shared/services/auth-interceptor.service';
 import { ErrorHandlerService } from './shared/services/error-handler.service';
 import { NgxStripeModule } from 'ngx-stripe';
@@ -46,6 +46,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       { path: 'signin-callback', component: SigninRedirectCallbackComponent },
       { path: 'signout-callback', component: SignoutRedirectCallbackComponent },
       { path: '404', component: ErrorPagesComponent },
+      { path: 'subscription', loadChildren: () => import('./subscription/subscription.module').then(m => m.SubscriptionModule)},
       { path: '', redirectTo: '/home', pathMatch: 'full' },
       { path: '**', redirectTo: '/404', pathMatch: 'full' },
     ]),
