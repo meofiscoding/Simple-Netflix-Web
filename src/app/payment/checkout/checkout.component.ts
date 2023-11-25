@@ -9,7 +9,7 @@ import { Constants } from 'src/app/shared/constants';
 import { Router } from '@angular/router';
 import { ApiserviceService } from 'src/app/shared/services/apiservice.service';
 import { SubscriptionCheckOutDto } from 'src/app/_interface/payment/subscriptionCheckOutDto.model';
-import { environment } from 'src/environments/environment.development';
+import { environment } from 'src/environments/environment';
 import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
@@ -103,7 +103,7 @@ export class CheckoutComponent {
     }).subscribe((result) => {
       this.paying.set(false);
       if (result.error) {
-        alert({ success: false, error: result.error.message });
+        alert("Payment failed");
       } else {
         // The payment has been processed!
         if (result.paymentIntent.status === 'succeeded') {

@@ -13,7 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptorService } from './shared/services/auth-interceptor.service';
 import { ErrorHandlerService } from './shared/services/error-handler.service';
 import { NgxStripeModule } from 'ngx-stripe';
-import { environment } from 'src/environments/environment.development';
+import { environment } from 'src/environments/environment';
 import { MoviePlayerComponent } from './movie/movie-player/movie-player.component';
 import { SearchComponent } from './menu/search/search.component';
 import { SearchInputComponent } from './menu/search/search-input/search-input.component';

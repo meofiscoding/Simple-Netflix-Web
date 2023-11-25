@@ -6,7 +6,7 @@ import { ApiserviceService } from './apiservice.service';
 import { UserForRegistrationDto } from 'src/app/_interface/user/userForRegistrationDto.model';
 import { RegistrationResponseDto } from 'src/app/_interface/response/registrationResponseDto.model';
 import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment.development';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
