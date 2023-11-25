@@ -32,6 +32,11 @@ export class AuthService {
 
   constructor(private apiService: ApiserviceService, private http: HttpClient) {
     this._userManager = new UserManager(this.idpSettings);
+    // Subscribe to an event as soon as the access token expires
+    this._userManager.events.addAccessTokenExpired(_ => {
+      // Fire the loginChanged observable through its subject
+      this._loginChangedSubject.next(false);
+    });
   }
 
   public login = () => {
@@ -86,6 +91,7 @@ export class AuthService {
 
   public finishLogout = () => {
     this._user = null;
+    this._loginChangedSubject.next(false);
     return this._userManager.signoutRedirectCallback();
   }
 
