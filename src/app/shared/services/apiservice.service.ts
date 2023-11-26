@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from './auth.service';
 import { Constants } from '../constants';
 import { environment } from 'src/environments/environment';
@@ -17,7 +17,8 @@ export class ApiserviceService {
   }
 
   public postData = (route: string, data: any) => {
-    return this.http.post(this.createCompleteRoute(route, environment.apiRoot), data);
+    let reqHeaders = new HttpHeaders().set('Content-Type','application/json');
+    return this.http.post(this.createCompleteRoute(route, environment.apiRoot), data, {headers:reqHeaders});
   };
 
   public createCompleteRoute = (route: string, envAddress: string) => {

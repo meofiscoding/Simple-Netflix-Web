@@ -15,6 +15,7 @@ export class MenuComponent {
   public userAvatar: string = "";
   public moviesCategories: any = [];
   public isInMoviesPage: boolean = false;
+  public username: string = "";
 
   ngOnInit() {
     this._authService.loginChanged.subscribe(res => {
@@ -22,6 +23,10 @@ export class MenuComponent {
       if (this.isUserAuthenticated) {
         this.createUserAvatar();
       }
+      // get username
+      this._authService.getCurretnUserName().then(res => {
+        this.username = res;
+      })
       // check if user is member
       this._authService.checkIfUserIsMember()
         .then(res => {
@@ -61,6 +66,14 @@ export class MenuComponent {
     this._authService.getCurretnUserName().then(res => {
       console.log(res);
       this.userAvatar = "https://api.dicebear.com/7.x/thumbs/png?seed=" + res + "&background=%230000ff&radius=50&size=100";
+    })
+  }
+
+  manageBilling() {
+    this._apiService.postData(Constants.customerPortal,JSON.stringify(this.username)).subscribe((res: any) => {
+      debugger;
+      console.log(res);
+      window.location.href = res["url"];
     })
   }
 

@@ -38,8 +38,18 @@
         aria-expanded="false" />
       <ul class="dropdown-menu">
         <li>
+          <strong class="dropdown-item"> {{username}} </strong>
+          <hr/>
+        </li>
+        <li>
           <a *ngIf="isUserAuthenticated" (click)="logout()" class="dropdown-item">Logout</a>
         </li>
+        <li>
+          <span *ngIf="isUserAuthenticated" (click)="manageBilling()" class="dropdown-item">Manage billing</span>
+        </li>
+        <!-- <form method="POST" action="/create-customer-portal-session">
+          <button type="submit">Manage billing</button>
+        </form> -->
       </ul>
     </div>
   </div>

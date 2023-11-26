@@ -19,4 +19,5 @@ export class Constants {
     public static moviesCategoriesApi = "movies/categories";
     public static moviesTagsApi = "movies/tags";
     public static moviesSearchApi = "movies/search";
+    public static customerPortal = "payment/customerportal"
 }
