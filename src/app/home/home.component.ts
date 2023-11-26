@@ -8,9 +8,16 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent {
   constructor(public _authService: AuthService, private _router: Router) { }
+  isMember: boolean = false;
+  isUserAuthenticated: boolean = false;
 
   ngOnInit() {
+    this._authService.isAuthenticated().then((isAuth) => {
+      this.isUserAuthenticated = isAuth;
+    });
+
     this._authService.checkIfUserIsMember().then((isMember) => {
+      this.isMember = isMember;
       if (isMember) {
         this._router.navigate(['/movies']);
       }
@@ -18,6 +25,8 @@ export class HomeComponent {
   }
 
   ngAfterViewInit() {
+    console.log(this.isMember);
+    console.log(this.isUserAuthenticated)
     document.querySelector('body')?.classList.add('bg-home');
   }
 

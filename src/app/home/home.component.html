@@ -5,10 +5,20 @@
     Ready to watch? Enter your email to create or restart your membership.
   </h3>
   <button
+    *ngIf="!isUserAuthenticated"
     [routerLink]="['/authentication/register']"
     routerLinkActive="active"
     [routerLinkActiveOptions]="{ exact: true }"
   >
     Register Now!!
+  </button>
+
+  <button
+    *ngIf="!isMember && isUserAuthenticated"
+    [routerLink]="['/payment/planform']"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >
+    Subscribe Now!!
   </button>
 </div>
