@@ -45,7 +45,7 @@
           <a *ngIf="isUserAuthenticated" (click)="logout()" class="dropdown-item">Logout</a>
         </li>
         <li>
-          <span *ngIf="isUserAuthenticated" (click)="manageBilling()" class="dropdown-item">Manage billing</span>
+          <span *ngIf="isUserAuthenticated && isUserMember" (click)="manageBilling()" class="dropdown-item">Manage billing</span>
         </li>
         <!-- <form method="POST" action="/create-customer-portal-session">
           <button type="submit">Manage billing</button>
