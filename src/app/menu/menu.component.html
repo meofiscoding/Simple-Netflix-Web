@@ -36,11 +36,9 @@
       <!-- <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button> -->
       <img class="netflix-profile dropdown-toggle" src="{{ userAvatar }}" alt="avatar" data-bs-toggle="dropdown"
         aria-expanded="false" />
-      <ul class="dropdown-menu">
-        <li>
-          <strong class="dropdown-item"> {{username}} </strong>
+      <ul class="dropdown-menu text-center">
+          <strong> {{username}} </strong>
           <hr/>
-        </li>
         <li>
           <a *ngIf="isUserAuthenticated" (click)="logout()" class="dropdown-item">Logout</a>
         </li>
