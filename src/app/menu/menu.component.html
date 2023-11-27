@@ -40,10 +40,10 @@
           <strong> {{username}} </strong>
           <hr/>
         <li>
-          <a *ngIf="isUserAuthenticated" (click)="logout()" class="dropdown-item">Logout</a>
+          <span *ngIf="isUserAuthenticated && isUserMember" (click)="manageBilling()" class="dropdown-item">Manage billing</span>
         </li>
         <li>
-          <span *ngIf="isUserAuthenticated && isUserMember" (click)="manageBilling()" class="dropdown-item">Manage billing</span>
+          <a *ngIf="isUserAuthenticated" (click)="logout()" class="dropdown-item">Logout</a>
         </li>
         <!-- <form method="POST" action="/create-customer-portal-session">
           <button type="submit">Manage billing</button>
