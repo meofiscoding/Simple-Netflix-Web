@@ -3,18 +3,40 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.1.
 
 ## Demo
+_Register_
+![register](https://github.com/meofiscoding/Simple-Netflix-Web/blob/main/assets/img/register.png)
+
+_Login_
+![login](https://github.com/meofiscoding/Simple-Netflix-Web/blob/main/assets/img/login.png)
+
+_Home_
+![homePreview](https://github.com/meofiscoding/Simple-Netflix-Web/blob/main/assets/img/homePreview.png)
+
+_Payment_
+![planform](https://github.com/meofiscoding/Simple-Netflix-Web/blob/main/assets/img/planform.png)
+
+_Checkout_
+![checkout](https://github.com/meofiscoding/Simple-Netflix-Web/blob/main/assets/img/checkout.png)
 
 _Browse Movies_
-![Login Demo](https://github.com/meofiscoding/Simple-Netflix-Web/blob/main/assets/browse_movie.gif)
+![movieCarousel](https://github.com/meofiscoding/Simple-Netflix-Web/blob/main/assets/img/movieCarousel.png)
+![movieByCategory](https://github.com/meofiscoding/Simple-Netflix-Web/blob/main/assets/img/movieByCategory.png)
+
+_Search_
+![Search1](https://github.com/meofiscoding/Simple-Netflix-Web/blob/main/assets/img/search1.png)
+![Search2](https://github.com/meofiscoding/Simple-Netflix-Web/blob/main/assets/img/search2.png)
 
 _Watching Movie_
 </br>
-![Player Demo](https://github.com/meofiscoding/Simple-Netflix-Web/blob/main/assets/watch_movie_preview.gif)
+![Watching Movie](https://github.com/meofiscoding/Simple-Netflix-Web/blob/main/assets/img/watchMovie.png)
 
 _Select Episode_
 </br>
-![Player Demo](https://github.com/meofiscoding/Simple-Netflix-Web/blob/main/assets/select_episode.gif)
+![selectepisode](https://github.com/meofiscoding/Simple-Netflix-Web/blob/main/assets/img/selectepisode.png)
 
+
+_Customer Portal_
+![CustomerPortal](https://github.com/meofiscoding/Simple-Netflix-Web/blob/main/assets/img/CustomerPortal.png)
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
