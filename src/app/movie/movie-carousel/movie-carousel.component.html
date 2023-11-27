@@ -1,42 +1,44 @@
-<section class="section-title">
-    <p class="text-white">
-        <b>{{ categoryTitle }}</b>
-    </p>
-</section>
-<div id="carouselExampleInterval" class="carousel slide px-4" data-bs-ride="carousel">
-    <div class="carousel-inner" style="position: relative; overflow: visible">
-        <div *ngFor="let movie of moviesList; let isFirst = first"
-            [ngClass]="{ 'carousel-item': true, active: isFirst }" data-bs-interval="2000">
-            <section class="d-flex">
-                <div class="card" *ngFor="let item of movie" [attr.data-label]="item.status">
-                    <img src="{{ item.poster }}" class="card-img-top" alt="..." />
-                    <div class="card-body">
-                        <section class="d-flex justify-content-between">
-                            <strong class="netflix-card-text text-white text-left">
-                                {{ item.movieName }}
-                            </strong>
-                            <div class="movie-toolbar">
-                                <a [routerLink]="['/movies', item.id]" [state]="{ data: item.id }">
-                                    <i class="fa-solid fa-play card-icon"
-                                        style="margin-right: 5px; color: white"></i>
-                                </a>
-                                <i class="fa-solid fa-circle-plus card-icon" style="color: white"></i>
-                            </div>
-                        </section>
-                        <span class="netflix-card-text text-white truncate-lines">
-                            {{ item.description }}
-                        </span>
+<ng-container *ngIf="moviesList.length > 0">
+    <section class="section-title">
+        <p class="text-white">
+            <b>{{ categoryTitle }}</b>
+        </p>
+    </section>
+    <div id="carouselExampleInterval" class="carousel slide px-4" data-bs-ride="carousel">
+        <div class="carousel-inner" style="position: relative; overflow: visible">
+            <div *ngFor="let movie of moviesList; let isFirst = first"
+                [ngClass]="{ 'carousel-item': true, active: isFirst }" data-bs-interval="2000">
+                <section class="d-flex">
+                    <div class="card" *ngFor="let item of movie" [attr.data-label]="item.status">
+                        <img src="{{ item.poster }}" class="card-img-top" alt="..." />
+                        <div class="card-body">
+                            <section class="d-flex justify-content-between">
+                                <strong class="netflix-card-text text-white text-left">
+                                    {{ item.movieName }}
+                                </strong>
+                                <div class="movie-toolbar">
+                                    <a [routerLink]="['/movies', item.id]" [state]="{ data: item.id }">
+                                        <i class="fa-solid fa-play card-icon"
+                                            style="margin-right: 5px; color: white"></i>
+                                    </a>
+                                    <i class="fa-solid fa-circle-plus card-icon" style="color: white"></i>
+                                </div>
+                            </section>
+                            <span class="netflix-card-text text-white truncate-lines">
+                                {{ item.description }}
+                            </span>
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            </div>
         </div>
+        <!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button> -->
     </div>
-    <!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button> -->
-</div>
+</ng-container>
